@@ -19,8 +19,8 @@
                 "Elnooronline\\LaravelBootstrapForms\\Providers\\BootstrapFormsServiceProvider"
             ],
             "aliases": {
-                "BsForm": "Elnooronline\\LaravelBootstrapForms\\Facades\\BsForm",
+                "BsForm": "Elnooronline\\LaravelBootstrapForms\\Facades\\BsForm"
             }
         }
-    },
+    }
 }
