@@ -1,0 +1,26 @@
+{
+    "name": "elnooronline/laravel-bootstrap-forms",
+    "description": "TODO",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ahmed Fathy",
+            "email": "aliraqi.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "5.5.*|5.6.*",
+        "laravelcollective/html": "^5.6"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Elnooronline\\LaravelBootstrapForms\\Providers\\BootstrapFormsServiceProvider"
+            ],
+            "aliases": {
+                "BsForm": "Elnooronline\\LaravelBootstrapForms\\Facades\\BsForm",
+            }
+        }
+    },
+}
