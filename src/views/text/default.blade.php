@@ -3,7 +3,7 @@
         {{ Form::label($name, $label, ['class' => 'content-label']) }}
     @endif
 
-    {{ Form::text($name, $value, ['class' => 'form-control', 'placeholder' => $placeholder]) }}
+    {{ Form::text($name, $value, array_merge(['class' => 'form-control'], $attributes)) }}
 
     @if($inlineValidation)
         @if($errors->has($name))

@@ -8,13 +8,7 @@
 
         <div class="col-md-10">
 
-            {{ Form::textarea($name, $value, [
-                'class' => 'form-control',
-                'placeholder' => $placeholder,
-                'style' => 'resize: vertical',
-                'cols' => $cols,
-                'rows' => $rows,
-            ]) }}
+            {{ Form::textarea($name, $value, array_merge(['class' => 'form-control', 'style' => 'resize: vertical'], $attributes)) }}
 
             @if($inlineValidation)
                 @if($errors->has($name))

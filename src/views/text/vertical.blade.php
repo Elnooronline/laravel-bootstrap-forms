@@ -8,7 +8,7 @@
 
         <div class="col-md-10">
 
-            {{ Form::text($name, $value, ['class' => 'form-control', 'placeholder' => $placeholder]) }}
+            {{ Form::text($name, $value, array_merge(['class' => 'form-control'], $attributes)) }}
 
             @if($inlineValidation)
                 @if($errors->has($name))
