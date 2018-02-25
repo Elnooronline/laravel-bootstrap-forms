@@ -202,6 +202,24 @@ abstract class BaseComponent implements Htmlable
     }
 
     /**
+     * Add custom attribute.
+     *
+     * @param string|array $key
+     * @param null $value
+     * @return $this
+     */
+    public function attribute($key, $value = null)
+    {
+        if (is_array($key)) {
+            $this->attributes = array_merge($this->attributes, $key);
+        } else {
+            $this->attributes[$key] = $value;
+        }
+
+        return $this;
+    }
+
+    /**
      * @param $note
      * @return $this
      */
