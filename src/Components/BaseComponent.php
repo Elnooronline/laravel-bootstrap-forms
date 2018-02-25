@@ -138,7 +138,7 @@ abstract class BaseComponent implements Htmlable
     protected function hasDefaultLocaledPlaceholder($name)
     {
         if (Lang::has($trans = "{$this->resource}.placeholders.$name")) {
-            $this->placeholder = Lang::get($trans);
+            $this->attributes['placeholder'] = Lang::get($trans);
         }
     }
 
