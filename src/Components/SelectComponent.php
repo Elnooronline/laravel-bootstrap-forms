@@ -41,6 +41,17 @@ class SelectComponent extends TextualComponent
     }
 
     /**
+     * @param array $options
+     * @return $this
+     */
+    public function options($options = [])
+    {
+        $this->options = $options;
+
+        return $this;
+    }
+
+    /**
      * The variables with registerd in view component.
      *
      * @return array
