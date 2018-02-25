@@ -7,10 +7,9 @@ class TextualComponent extends BaseComponent
     /**
      * Initialized the input arguments.
      *
-     * @param  $args
      * @return $this
      */
-    public function init(...$args)
+    public function init()
     {
         //
     }
