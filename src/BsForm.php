@@ -2,6 +2,8 @@
 
 namespace Elnooronline\LaravelBootstrapForms;
 
+use Elnooronline\LaravelBootstrapForms\Components\EmailComponent;
+use Elnooronline\LaravelBootstrapForms\Components\NumberComponent;
 use Form;
 use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
 use Elnooronline\LaravelBootstrapForms\Components\TextComponent;
@@ -21,6 +23,8 @@ class BsForm
         'text' => TextComponent::class,
         'textarea' => TextareaComponent::class,
         'submit' => SubmitComponent::class,
+        'email' => EmailComponent::class,
+        'number' => NumberComponent::class,
     ];
 
     /**

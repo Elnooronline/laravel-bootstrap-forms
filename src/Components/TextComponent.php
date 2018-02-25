@@ -2,7 +2,7 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Components;
 
-class TextComponent extends BaseComponent
+class TextComponent extends TextualComponent
 {
     /**
      * The component view path.

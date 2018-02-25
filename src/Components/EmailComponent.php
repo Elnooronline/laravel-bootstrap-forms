@@ -2,14 +2,14 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Components;
 
-class TextareaComponent extends TextualComponent
+class EmailComponent extends TextualComponent
 {
     /**
      * The component view path.
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::textarea';
+    protected $viewPath = 'BsForm::email';
 
     /**
      * Initialized the input arguments.
@@ -29,32 +29,6 @@ class TextareaComponent extends TextualComponent
         $this->hasDefaultLocaledNote($name);
 
         $this->hasDefaultLocaledPlaceholder($name);
-
-        return $this;
-    }
-
-    /**
-     * Set textarea cols attribute.
-     *
-     * @param $cols
-     * @return $this
-     */
-    public function cols($cols)
-    {
-        $this->attributes['cols'] = $cols;
-
-        return $this;
-    }
-
-    /**
-     * Set textarea rows attribute.
-     *
-     * @param $rows
-     * @return $this
-     */
-    public function rows($rows)
-    {
-        $this->attributes['rows'] = $rows;
 
         return $this;
     }

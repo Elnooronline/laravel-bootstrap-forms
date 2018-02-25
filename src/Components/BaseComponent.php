@@ -50,11 +50,11 @@ abstract class BaseComponent implements Htmlable
     protected $note;
 
     /**
-     * The input's placeholder.
+     * The input's attributes.
      *
-     * @var string
+     * @var array
      */
-    protected $placeholder;
+    protected $attributes = [];
 
     /**
      * The select's options array.
@@ -176,12 +176,12 @@ abstract class BaseComponent implements Htmlable
     }
 
     /**
-     * @param $placeholder
+     * @param $required
      * @return $this
      */
-    public function placeholder($placeholder)
+    public function required($required)
     {
-        $this->placeholder = $placeholder;
+        $this->attributes['required'] = $required;
 
         return $this;
     }
@@ -235,7 +235,7 @@ abstract class BaseComponent implements Htmlable
             'name' => $this->name,
             'value' => $this->value,
             'note' => $this->note,
-            'placeholder' => $this->placeholder,
+            'attributes' => $this->attributes,
             'inlineValidation' => $this->inlineValidation,
         ], $this->viewComposer()))->render();
     }
