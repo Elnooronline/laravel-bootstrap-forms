@@ -8,9 +8,11 @@ use Elnooronline\LaravelBootstrapForms\Components\TextComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TimeComponent;
 use Elnooronline\LaravelBootstrapForms\Components\DateComponent;
 use Elnooronline\LaravelBootstrapForms\Components\EmailComponent;
+use Elnooronline\LaravelBootstrapForms\Components\RadioComponent;
 use Elnooronline\LaravelBootstrapForms\Components\NumberComponent;
 use Elnooronline\LaravelBootstrapForms\Components\SelectComponent;
 use Elnooronline\LaravelBootstrapForms\Components\SubmitComponent;
+use Elnooronline\LaravelBootstrapForms\Components\CheckboxComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TextareaComponent;
 
 class BsForm
@@ -31,6 +33,8 @@ class BsForm
         'select' => SelectComponent::class,
         'date' => DateComponent::class,
         'time' => TimeComponent::class,
+        'checkbox' => CheckboxComponent::class,
+        'radio' => RadioComponent::class,
     ];
 
     /**
