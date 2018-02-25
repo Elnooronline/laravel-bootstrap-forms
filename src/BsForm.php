@@ -25,6 +25,7 @@ class BsForm
         'submit' => SubmitComponent::class,
         'email' => EmailComponent::class,
         'number' => NumberComponent::class,
+        'select' => SelectComponent::class,
     ];
 
     /**
