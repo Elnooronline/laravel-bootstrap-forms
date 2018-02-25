@@ -2,8 +2,8 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Providers;
 
-use Elnooronline\LaravelBootstrapForms\BsForm;
 use Illuminate\Support\ServiceProvider;
+use Elnooronline\LaravelBootstrapForms\BsForm;
 use Elnooronline\LaravelBootstrapForms\Helpers\FormDirectives;
 
 class BootstrapFormsServiceProvider extends ServiceProvider

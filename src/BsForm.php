@@ -2,14 +2,14 @@
 
 namespace Elnooronline\LaravelBootstrapForms;
 
+use Form;
+use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
+use Elnooronline\LaravelBootstrapForms\Components\TextComponent;
+use Elnooronline\LaravelBootstrapForms\Components\TimeComponent;
 use Elnooronline\LaravelBootstrapForms\Components\DateComponent;
 use Elnooronline\LaravelBootstrapForms\Components\EmailComponent;
 use Elnooronline\LaravelBootstrapForms\Components\NumberComponent;
 use Elnooronline\LaravelBootstrapForms\Components\SelectComponent;
-use Elnooronline\LaravelBootstrapForms\Components\TimeComponent;
-use Form;
-use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
-use Elnooronline\LaravelBootstrapForms\Components\TextComponent;
 use Elnooronline\LaravelBootstrapForms\Components\SubmitComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TextareaComponent;
 

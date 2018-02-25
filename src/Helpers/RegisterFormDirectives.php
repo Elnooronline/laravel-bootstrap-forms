@@ -78,7 +78,6 @@ class RegisterFormDirectives
         return $this->setCloseFormDirective('endformput');
     }
 
-
     /**
      * Register form directive.
      *
@@ -92,7 +91,6 @@ class RegisterFormDirectives
             return "<?php echo BsForm::open($url, $attributes); ?>";
         });
     }
-
 
     /**
      * Register endform directive.
