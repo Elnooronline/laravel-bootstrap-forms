@@ -2,8 +2,10 @@
 
 namespace Elnooronline\LaravelBootstrapForms;
 
+use Elnooronline\LaravelBootstrapForms\Components\DateComponent;
 use Elnooronline\LaravelBootstrapForms\Components\EmailComponent;
 use Elnooronline\LaravelBootstrapForms\Components\NumberComponent;
+use Elnooronline\LaravelBootstrapForms\Components\TimeComponent;
 use Form;
 use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
 use Elnooronline\LaravelBootstrapForms\Components\TextComponent;
@@ -26,6 +28,8 @@ class BsForm
         'email' => EmailComponent::class,
         'number' => NumberComponent::class,
         'select' => SelectComponent::class,
+        'date' => DateComponent::class,
+        'time' => TimeComponent::class,
     ];
 
     /**
