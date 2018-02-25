@@ -1,3 +1,3 @@
 <div class="form-group">
-    {{ Form::submit($name, ['class' => "btn $className"]) }}
+    {{ Form::submit($label, ['class' => "btn $className", 'name' => $name]) }}
 </div>

@@ -21,12 +21,14 @@ class SubmitComponent extends BaseComponent
     /**
      * Initialized the input arguments.
      *
+     * @param null $label
      * @param null $name
      * @param null $value
      * @return $this
      */
-    public function init($name = null)
+    public function init($label = null, $name = null)
     {
+        $this->label = $label;
         $this->name = $name;
 
         return $this;
@@ -100,7 +102,7 @@ class SubmitComponent extends BaseComponent
     protected function viewComposer()
     {
         return [
-            'className' => $this->className
+            'className' => $this->className,
         ];
     }
 }
