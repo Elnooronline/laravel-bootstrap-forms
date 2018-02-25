@@ -179,9 +179,24 @@ abstract class BaseComponent implements Htmlable
      * @param $required
      * @return $this
      */
-    public function required($required)
+    public function required($required = true)
     {
-        $this->attributes['required'] = $required;
+        if ($required) {
+            $this->attributes['required'] = 'required';
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param $autofocus
+     * @return $this
+     */
+    public function autofocus($autofocus = true)
+    {
+        if ($autofocus) {
+            $this->attributes['autofocus'] = 'autofocus';
+        }
 
         return $this;
     }
