@@ -5,6 +5,7 @@ namespace Elnooronline\LaravelBootstrapForms;
 use Elnooronline\LaravelBootstrapForms\Components\DateComponent;
 use Elnooronline\LaravelBootstrapForms\Components\EmailComponent;
 use Elnooronline\LaravelBootstrapForms\Components\NumberComponent;
+use Elnooronline\LaravelBootstrapForms\Components\SelectComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TimeComponent;
 use Form;
 use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
