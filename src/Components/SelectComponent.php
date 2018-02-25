@@ -9,7 +9,7 @@ class SelectComponent extends TextualComponent
      *
      * @var string
      */
-    protected $viewPath = 'components.select';
+    protected $viewPath = 'BsForm::select';
 
     /**
      * @var array
