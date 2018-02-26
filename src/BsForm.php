@@ -2,6 +2,7 @@
 
 namespace Elnooronline\LaravelBootstrapForms;
 
+use Collective\Html\FormBuilder;
 use Form;
 use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
 use Elnooronline\LaravelBootstrapForms\Components\TextComponent;
@@ -12,6 +13,7 @@ use Elnooronline\LaravelBootstrapForms\Components\RadioComponent;
 use Elnooronline\LaravelBootstrapForms\Components\NumberComponent;
 use Elnooronline\LaravelBootstrapForms\Components\SelectComponent;
 use Elnooronline\LaravelBootstrapForms\Components\SubmitComponent;
+use Elnooronline\LaravelBootstrapForms\Components\PasswordComponent;
 use Elnooronline\LaravelBootstrapForms\Components\CheckboxComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TextareaComponent;
 
@@ -27,6 +29,7 @@ class BsForm
     protected $components = [
         'text' => TextComponent::class,
         'textarea' => TextareaComponent::class,
+        'password' => PasswordComponent::class,
         'submit' => SubmitComponent::class,
         'email' => EmailComponent::class,
         'number' => NumberComponent::class,
