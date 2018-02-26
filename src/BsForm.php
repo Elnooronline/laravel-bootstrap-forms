@@ -2,8 +2,9 @@
 
 namespace Elnooronline\LaravelBootstrapForms;
 
-use Collective\Html\FormBuilder;
 use Form;
+use Collective\Html\FormBuilder;
+use Prophecy\Exception\Doubler\MethodNotFoundException;
 use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
 use Elnooronline\LaravelBootstrapForms\Components\TextComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TimeComponent;
@@ -80,9 +81,15 @@ class BsForm
      */
     public function __call($name, $arguments)
     {
-        $class = $this->components[$name];
+        if (isset($this->components[$name])) {
+            return (new $this->components[$name]($this->resource))->init(...$arguments);
+        }
+        if (in_array($name, $this->getFormBuilderMethods())) {
+            return app('form')->{$name}(...$arguments);
+        }
+        $className = __CLASS__;
 
-        return (new $class($this->resource))->init(...$arguments);
+        throw new MethodNotFoundException("method {$name} not found in {$className}!", $name, $className);
     }
 
     /**
@@ -99,5 +106,22 @@ class BsForm
     private function __clone()
     {
         //
+    }
+
+    /**
+     * @return array
+     * @throws \ReflectionException
+     */
+    public function getFormBuilderMethods()
+    {
+        $class = new \ReflectionClass(FormBuilder::class);
+        $methods = $class->getMethods(\ReflectionMethod::IS_PUBLIC);
+        $methodsList = [];
+        foreach ($methods as $method) {
+            if (!starts_with($method->getName(), '__')) {
+                $methodsList[] = $method->getName();
+            }
+        }
+        return $methodsList;
     }
 }
