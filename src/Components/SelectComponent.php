@@ -52,6 +52,19 @@ class SelectComponent extends TextualComponent
     }
 
     /**
+     * @param bool $multiple
+     * @return $this
+     */
+    public function multiple($multiple = true)
+    {
+        if ($multiple) {
+            $this->attributes['multiple'] = 'multiple';
+        }
+
+        return $this;
+    }
+
+    /**
      * The variables with registerd in view component.
      *
      * @return array
