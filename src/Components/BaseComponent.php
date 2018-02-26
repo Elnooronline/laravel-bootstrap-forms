@@ -111,6 +111,8 @@ abstract class BaseComponent implements Htmlable
      */
     protected function hasDefaultLocaledLabel($name)
     {
+        $name = $this->getDefaultLabel($name);
+
         if (Lang::has($trans = "{$this->resource}.attributes.$name")) {
             $this->label = Lang::get($trans);
         }
@@ -162,6 +164,19 @@ abstract class BaseComponent implements Htmlable
         $this->label = $label;
 
         return $this;
+    }
+
+    /**
+     *
+     * @param $name
+     * @return string
+     */
+    protected function getDefaultLabel($name)
+    {
+        $pattern = "/([a-zA-Z0-9]+)(\[(?:.*)\])?/";
+        $name = preg_replace($pattern, "$1", $name);
+
+        return $name;
     }
 
     /**
