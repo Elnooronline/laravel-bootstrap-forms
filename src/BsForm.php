@@ -6,6 +6,7 @@ use Form;
 use Collective\Html\FormBuilder;
 use Prophecy\Exception\Doubler\MethodNotFoundException;
 use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
+use Elnooronline\LaravelBootstrapForms\Components\FileComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TextComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TimeComponent;
 use Elnooronline\LaravelBootstrapForms\Components\DateComponent;
@@ -39,6 +40,7 @@ class BsForm
         'time' => TimeComponent::class,
         'checkbox' => CheckboxComponent::class,
         'radio' => RadioComponent::class,
+        'file' => FileComponent::class,
     ];
 
     /**
