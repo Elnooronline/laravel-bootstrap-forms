@@ -356,3 +356,7 @@ example content of `views/components/image/default.blade.php` file :
 </div>
 
 ```
+## Usage
+```
+{{ BsForm::image('photo', $url) }}
+```
