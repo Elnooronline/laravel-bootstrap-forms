@@ -1,9 +1,9 @@
-# #installation
+# # installation
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `elnooronline/laravel-bootstrap-forms`.
 ```
 composer require elnooronline/laravel-bootstrap-forms:dev-master
 ```
-# #Opening A Form
+# # Opening A Form
 ```
 {{ BsForm::open(['url' => 'foo/bar']) }}
 //
@@ -34,7 +34,7 @@ You may pass in route parameters as well:
 {{ BsForm::open(['route' => ['route.name', $user->id]]) }}
 {{ BsForm::open(['action' => ['Controller@method', $user->id]]) }}
 ```
-# #Text, Text Area, Date, Number & Password Fields
+# # Text, Text Area, Date, Number & Password Fields
 Generating A Text Input
 ```
 {{ BsForm::text('username') }}
@@ -55,7 +55,7 @@ Generating A Text Input
 {{ BsForm::email($name)->value($value)->label($label) }}
 {{ BsForm::file($name)->label('Upload File') }}
 ```
-# #Checkboxes and Radio Buttons
+# # Checkboxes and Radio Buttons
 ## Generating A Checkbox Or Radio Input
 ```
 {{ BsForm::checkbox('name', 'value')->checked(false) }}
@@ -64,7 +64,7 @@ Generating A Text Input
 {{ BsForm::radio('name', 'value')->checked(false)->label('label') }}
 {{ BsForm::radio('name')->value('value')->checked(false)->label('label') }}
 ```
-# #Drop-Down Lists
+# # Drop-Down Lists
 ```
 {{ BsForm::select('size', ['L' => 'Large', 'S' => 'Small']) }}
 {{ BsForm::select('size')->options(['L' => 'Large', 'S' => 'Small']) }}
@@ -84,7 +84,7 @@ Generating A Text Input
          'Dogs' => ['spaniel' => 'Spaniel'],
    ]) }}
 ```
-# #Generating A Submit Button
+# # Generating A Submit Button
 ```
 {{ BsForm::submit('Click Me!') }}
 ```
@@ -96,7 +96,7 @@ Generating A Text Input
 {{ BsForm::submit('Click Me!')->warning() }}
 {{ BsForm::submit('Click Me!')->danger() }}
 ``` 
-# #Supported Methods
+# # Supported Methods
 `->label($label) ` : To Generate label to the specified field.
 ```
 {{ BsForm::text('username')->label('Username') }}
@@ -163,7 +163,7 @@ Generating A Text Input
 {{ BsForm::close() }}
 ```
 
-# #Using Resource With Localed Fields
+# # Using Resource With Localed Fields
 You may add localed labels, notes and placeholders using resource option as well:
 ```
 BsForm::resource('users');
@@ -190,7 +190,7 @@ return [
     ...
 ];
 ```
-# #Example Register Form
+# # Example Register Form
 ```
 @php(BsForm::resource('users'))
 
@@ -202,7 +202,7 @@ return [
 {{ BsForm::close() }}
 ```
 
-# #Add Custom Style To The Component
+# # Add Custom Style To The Component
 run the `vendor:publish` artusan command to override components views as well.
 ```
 php artisan vendor:publish --provider="Elnooronline\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider" --tag BsForm
@@ -225,7 +225,7 @@ you can copy `default.blade.php` file as `custom.blade.php` and use custom style
 ```
 {{ BsForm::text('name')->style('custom') }}
 ```
-# #Add Custom Component
+# # Add Custom Component
 You may add new component class extends `BaseComponent` and regoster it in your `boot()` method in `AppServiceProvider` class as well:
 ```
 <?php
