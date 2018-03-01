@@ -1,8 +1,22 @@
-# # installation
+- [Installation](#installation)
+- [Opening A Form](#opening-a-form)
+- [Text, Text Area, Date, Number & Password Fields](#fields)
+- [Checkboxes and Radio Buttons](#checkboxes)
+- [Drop-Down Lists](#dropdown)
+- [Generating A Submit Button](#submit)
+- [Supported Methods](#methods)
+- [Using Resource With Localed Fields](#resource)
+- [Example Register Form](#example)
+- [Add Custom Style To The Component](#custom-style)
+- [Add Custom Component](#custom-component)
+
+<a name="installation"></a>
+# # Installation
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `elnooronline/laravel-bootstrap-forms`.
 ```
 composer require elnooronline/laravel-bootstrap-forms:dev-master
 ```
+<a name="opening-a-form"></a>
 # # Opening A Form
 ```
 {{ BsForm::open(['url' => 'foo/bar']) }}
@@ -34,6 +48,7 @@ You may pass in route parameters as well:
 {{ BsForm::open(['route' => ['route.name', $user->id]]) }}
 {{ BsForm::open(['action' => ['Controller@method', $user->id]]) }}
 ```
+<a name="fields"></a>
 # # Text, Text Area, Date, Number & Password Fields
 Generating A Text Input
 ```
@@ -55,6 +70,7 @@ Generating A Text Input
 {{ BsForm::email($name)->value($value)->label($label) }}
 {{ BsForm::file($name)->label('Upload File') }}
 ```
+<a name="checkboxes"></a>
 # # Checkboxes and Radio Buttons
 ## Generating A Checkbox Or Radio Input
 ```
@@ -64,6 +80,7 @@ Generating A Text Input
 {{ BsForm::radio('name', 'value')->checked(false)->label('label') }}
 {{ BsForm::radio('name')->value('value')->checked(false)->label('label') }}
 ```
+<a name="dropdown"></a>
 # # Drop-Down Lists
 ```
 {{ BsForm::select('size', ['L' => 'Large', 'S' => 'Small']) }}
@@ -84,6 +101,7 @@ Generating A Text Input
          'Dogs' => ['spaniel' => 'Spaniel'],
    ]) }}
 ```
+<a name="submit"></a>
 # # Generating A Submit Button
 ```
 {{ BsForm::submit('Click Me!') }}
@@ -96,6 +114,7 @@ Generating A Text Input
 {{ BsForm::submit('Click Me!')->warning() }}
 {{ BsForm::submit('Click Me!')->danger() }}
 ``` 
+<a name="metods"></a>
 # # Supported Methods
 `->label($label) ` : To Generate label to the specified field.
 ```
@@ -162,7 +181,7 @@ Generating A Text Input
 ```
 {{ BsForm::close() }}
 ```
-
+<a name="resource"></a>
 # # Using Resource With Localed Fields
 You may add localed labels, notes and placeholders using resource option as well:
 ```
@@ -190,6 +209,7 @@ return [
     ...
 ];
 ```
+<a name="example"></a>
 # # Example Register Form
 ```
 @php(BsForm::resource('users'))
@@ -201,7 +221,7 @@ return [
 	{{ BsForm::submit()->danger() }}
 {{ BsForm::close() }}
 ```
-
+<a name="custom-style"></a>
 # # Add Custom Style To The Component
 run the `vendor:publish` artusan command to override components views as well.
 ```
@@ -225,6 +245,7 @@ you can copy `default.blade.php` file as `custom.blade.php` and use custom style
 ```
 {{ BsForm::text('name')->style('custom') }}
 ```
+<a name="custom-component"></a>
 # # Add Custom Component
 You may add new component class extends `BaseComponent` and regoster it in your `boot()` method in `AppServiceProvider` class as well:
 ```
