@@ -14,7 +14,7 @@
 # # Installation
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `elnooronline/laravel-bootstrap-forms`.
 ```
-composer require elnooronline/laravel-bootstrap-forms:dev-master
+composer require elnooronline/laravel-bootstrap-forms
 ```
 <a name="opening-a-form"></a>
 # # Opening A Form
