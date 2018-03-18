@@ -24,9 +24,11 @@ class TextualComponent extends BaseComponent
      */
     public function lang($code, $name)
     {
-        $this->name = $this->name.':'.$code;
-
         $this->lang = $name;
+
+        $this->hasDefaultLocaledLabel($this->name);
+
+        $this->name = $this->name.':'.$code;
 
         return $this;
     }
