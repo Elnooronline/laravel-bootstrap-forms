@@ -8,6 +8,11 @@ use Illuminate\Contracts\Support\Htmlable;
 abstract class BaseComponent implements Htmlable
 {
     /**
+     * @var string
+     */
+    protected $lang;
+
+    /**
      * The form resource name.
      *
      * @var string
@@ -116,6 +121,10 @@ abstract class BaseComponent implements Htmlable
         if (Lang::has($trans = "{$this->resource}.attributes.$name")) {
             $this->label = Lang::get($trans);
         }
+
+        if ($this->lang) {
+            $this->label = $this->label. " ({$this->lang})";
+        }
     }
 
     /**
@@ -173,7 +182,7 @@ abstract class BaseComponent implements Htmlable
      */
     protected function getDefaultLabel($name)
     {
-        $pattern = "/([a-zA-Z0-9]+)(\[(?:.*)\])?/";
+        $pattern = "/([a-zA-Z0-9]+)(:.*)?(\[(?:.*)\])?/";
         $name = preg_replace($pattern, "$1", $name);
 
         return $name;

@@ -4,6 +4,7 @@ namespace Elnooronline\LaravelBootstrapForms\Components;
 
 class TextualComponent extends BaseComponent
 {
+
     /**
      * Initialized the input arguments.
      *
@@ -12,6 +13,22 @@ class TextualComponent extends BaseComponent
     public function init()
     {
         //
+    }
+
+    /**
+     * Add the given lang to the name attribute.
+     *
+     * @param $code
+     * @param $name
+     * @return $this
+     */
+    public function lang($code, $name)
+    {
+        $this->name = $this->name.':'.$code;
+
+        $this->lang = $name;
+
+        return $this;
     }
 
     /**
