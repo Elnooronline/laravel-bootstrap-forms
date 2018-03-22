@@ -2,7 +2,9 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Components;
 
-class TextualComponent extends BaseComponent
+use Elnooronline\LaravelBootstrapForms\Contracts\Components\LocalizableComponent;
+
+class TextualComponent extends BaseComponent implements LocalizableComponent
 {
 
     /**
