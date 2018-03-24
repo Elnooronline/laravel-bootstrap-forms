@@ -2,7 +2,7 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Components;
 
-class SelectComponent extends TextualComponent
+class SelectComponent extends BaseComponent
 {
     /**
      * The component view path.
@@ -31,11 +31,11 @@ class SelectComponent extends TextualComponent
 
         $this->options = $options;
 
-        $this->hasDefaultLocaledLabel($name);
+        $this->setDefaultLabel($name);
 
-        $this->hasDefaultLocaledNote($name);
+        $this->setDefaultNote($name);
 
-        $this->hasDefaultLocaledPlaceholder($name);
+        $this->setDefaultPlaceholder($name);
 
         return $this;
     }

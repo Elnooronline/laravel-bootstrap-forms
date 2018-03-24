@@ -4,7 +4,6 @@ namespace Elnooronline\LaravelBootstrapForms;
 
 use Form;
 use Collective\Html\FormBuilder;
-use Prophecy\Exception\Doubler\MethodNotFoundException;
 use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
 use Elnooronline\LaravelBootstrapForms\Components\FileComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TextComponent;

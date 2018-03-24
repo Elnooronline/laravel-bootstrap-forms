@@ -22,11 +22,11 @@ class PasswordComponent extends TextualComponent
     {
         $this->name = $name;
         
-        $this->hasDefaultLocaledLabel($name);
+        $this->setDefaultLabel($name);
 
-        $this->hasDefaultLocaledNote($name);
+        $this->setDefaultNote($name);
 
-        $this->hasDefaultLocaledPlaceholder($name);
+        $this->setDefaultPlaceholder($name);
 
         return $this;
     }

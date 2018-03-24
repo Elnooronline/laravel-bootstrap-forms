@@ -2,39 +2,8 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Components;
 
-use Elnooronline\LaravelBootstrapForms\Contracts\Components\LocalizableComponent;
-
-class TextualComponent extends BaseComponent implements LocalizableComponent
+abstract class TextualComponent extends BaseComponent
 {
-
-    /**
-     * Initialized the input arguments.
-     *
-     * @return $this
-     */
-    public function init()
-    {
-        //
-    }
-
-    /**
-     * Add the given lang to the name attribute.
-     *
-     * @param $code
-     * @param $name
-     * @return $this
-     */
-    public function lang($code, $name)
-    {
-        $this->lang = $name;
-
-        $this->hasDefaultLocaledLabel($this->name);
-
-        $this->name = $this->name.':'.$code;
-
-        return $this;
-    }
-
     /**
      * @param $max
      * @return $this

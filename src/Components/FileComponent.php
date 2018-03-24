@@ -22,9 +22,9 @@ class FileComponent extends BaseComponent
     {
         $this->name = $name;
 
-        $this->hasDefaultLocaledLabel($name);
+        $this->setDefaultLabel($name);
 
-        $this->hasDefaultLocaledNote($name);
+        $this->setDefaultNote($name);
 
         return $this;
     }

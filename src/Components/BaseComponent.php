@@ -8,11 +8,6 @@ use Illuminate\Contracts\Support\Htmlable;
 abstract class BaseComponent implements Htmlable
 {
     /**
-     * @var string
-     */
-    protected $lang;
-
-    /**
      * The form resource name.
      *
      * @var string
@@ -109,21 +104,17 @@ abstract class BaseComponent implements Htmlable
     abstract protected function viewComposer();
 
     /**
-     * Set the default localed label for the input.
+     * Set the default label for the input.
      *
      * @param $name
      * @return void
      */
-    protected function hasDefaultLocaledLabel($name)
+    protected function setDefaultLabel($name)
     {
         $name = $this->getDefaultLabel($name);
 
         if (Lang::has($trans = "{$this->resource}.attributes.$name")) {
             $this->label = Lang::get($trans);
-        }
-
-        if ($this->lang) {
-            $this->label = $this->label. " ({$this->lang})";
         }
     }
 
@@ -133,7 +124,7 @@ abstract class BaseComponent implements Htmlable
      * @param $name
      * @return void
      */
-    protected function hasDefaultLocaledNote($name)
+    protected function setDefaultNote($name)
     {
         if (Lang::has($trans = "{$this->resource}.notes.$name")) {
             $this->note = Lang::get($trans);
@@ -146,7 +137,7 @@ abstract class BaseComponent implements Htmlable
      * @param $name
      * @return void
      */
-    protected function hasDefaultLocaledPlaceholder($name)
+    protected function setDefaultPlaceholder($name)
     {
         if (Lang::has($trans = "{$this->resource}.placeholders.$name")) {
             $this->attributes['placeholder'] = Lang::get($trans);
@@ -285,16 +276,36 @@ abstract class BaseComponent implements Htmlable
         return $this;
     }
 
+    /**
+     * Render the component.
+     *
+     * @return string
+     */
     protected function render()
     {
-        return view($this->getViewPath())->with(array_merge([
+        $properties = array_merge([
             'label' => $this->label,
             'name' => $this->name,
             'value' => $this->value,
             'note' => $this->note,
             'attributes' => $this->attributes,
             'inlineValidation' => $this->inlineValidation,
-        ], $this->viewComposer()))->render();
+        ], $this->viewComposer());
+
+        return view($this->getViewPath())
+            ->with($this->transformProperties($properties))
+            ->render();
+    }
+
+    /**
+     * Transform the properties to be used in view.
+     *
+     * @param array $properties
+     * @return array
+     */
+    protected function transformProperties(array $properties)
+    {
+        return $properties;
     }
 
     public function toHtml()

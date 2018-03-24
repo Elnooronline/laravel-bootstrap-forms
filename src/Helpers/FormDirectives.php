@@ -3,6 +3,7 @@
 namespace Elnooronline\LaravelBootstrapForms\Helpers;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Blade;
 
 class FormDirectives
 {
@@ -18,5 +19,10 @@ class FormDirectives
                 (new RegisterFormDirectives())->{$method}();
             }
         });
+
+        Blade::directive('eachlocale', function ($expression) {
+            return "<?php foreach(['ar', 'en'] as \$locale)) ?>";
+        });
+
     }
 }

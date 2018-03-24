@@ -24,11 +24,11 @@ class NumberComponent extends TextualComponent
 
         $this->value = $value ?: old($name);
 
-        $this->hasDefaultLocaledLabel($name);
+        $this->setDefaultLabel($name);
 
-        $this->hasDefaultLocaledNote($name);
+        $this->setDefaultNote($name);
 
-        $this->hasDefaultLocaledPlaceholder($name);
+        $this->setDefaultPlaceholder($name);
 
         return $this;
     }
