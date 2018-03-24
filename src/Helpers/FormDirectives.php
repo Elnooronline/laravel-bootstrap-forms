@@ -21,7 +21,11 @@ class FormDirectives
         });
 
         Blade::directive('eachlocale', function ($expression) {
-            return "<?php foreach(['ar', 'en'] as \$locale)) ?>";
+            return "<?php foreach(['ar', 'en'] as \$locale): ?>";
+        });
+
+        Blade::directive('endeachlocale', function ($expression) {
+            return "<?php endforeach; ?>";
         });
 
     }
