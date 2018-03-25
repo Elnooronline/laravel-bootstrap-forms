@@ -18,28 +18,6 @@ class TextareaComponent extends TextualComponent implements LocalizableComponent
     protected $viewPath = 'BsForm::textarea';
 
     /**
-     * Initialized the input arguments.
-     *
-     * @param null $name
-     * @param null $value
-     * @return $this
-     */
-    public function init($name = null, $value = null)
-    {
-        $this->name = $name;
-
-        $this->value = $value ?: old($name);
-
-        $this->setDefaultLabel($name);
-
-        $this->setDefaultNote($name);
-
-        $this->setDefaultPlaceholder($name);
-
-        return $this;
-    }
-
-    /**
      * Set textarea cols attribute.
      *
      * @param $cols
@@ -63,15 +41,5 @@ class TextareaComponent extends TextualComponent implements LocalizableComponent
         $this->attributes['rows'] = $rows;
 
         return $this;
-    }
-
-    /**
-     * The variables with registerd in view component.
-     *
-     * @return array
-     */
-    protected function viewComposer()
-    {
-        return [];
     }
 }
