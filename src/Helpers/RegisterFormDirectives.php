@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Blade;
 
 class RegisterFormDirectives
 {
+    /**
+     * Register @bsMultilangualFormTabs directive.
+     *
+     * @return void
+     */
     public function registerMultilangualFormTabs()
     {
         Blade::directive('bsMultilangualFormTabs', function () {
@@ -19,12 +24,23 @@ class RegisterFormDirectives
         });
     }
 
+    /**
+     * Register @endBsMultilangualFormTabs directive.
+     *
+     * @return void
+     */
     public function registerEndMultilangualFormTabs()
     {
         Blade::directive('endBsMultilangualFormTabs', function () {
             return '<?php $__env->stopPush(); endforeach; BsForm::locale(null); $__env->popLoop(); $loop = $__env->getLastLoop(); echo $__env->renderComponent(); ?>';
         });
     }
+
+    /**
+     * Register @multilangualForm directive.
+     *
+     * @return void
+     */
     public function registerMultilangualForm()
     {
         Blade::directive('multilangualForm', function () {
@@ -36,14 +52,20 @@ class RegisterFormDirectives
         });
     }
 
+    /**
+     * Register @endMultilangualForm directive.
+     *
+     * @return void
+     */
     public function registerEndMultilangualForm()
     {
         Blade::directive('endMultilangualForm', function () {
             return '<?php endforeach; BsForm::locale(null); $__env->popLoop(); $loop = $__env->getLastLoop(); ?>';
         });
     }
+
     /**
-     * Register formpost directive.
+     * Register @formpost directive.
      *
      * @return void
      */
@@ -57,7 +79,7 @@ class RegisterFormDirectives
     }
 
     /**
-     * Register formpost directive.
+     * Register @formpost directive.
      *
      * @return void
      */
@@ -67,7 +89,7 @@ class RegisterFormDirectives
     }
 
     /**
-     * Register formget directive.
+     * Register @formget directive.
      *
      * @return void
      */
@@ -81,7 +103,7 @@ class RegisterFormDirectives
     }
 
     /**
-     * Register formget directive.
+     * Register @formget directive.
      *
      * @return void
      */
@@ -91,7 +113,7 @@ class RegisterFormDirectives
     }
 
     /**
-     * Register formput directive.
+     * Register @formput directive.
      *
      * @return void
      */
@@ -105,7 +127,7 @@ class RegisterFormDirectives
     }
 
     /**
-     * Register formput directive.
+     * Register @formput directive.
      *
      * @return void
      */
@@ -115,7 +137,7 @@ class RegisterFormDirectives
     }
 
     /**
-     * Register form directive.
+     * Register @form directive.
      *
      * @return void
      */
@@ -129,7 +151,7 @@ class RegisterFormDirectives
     }
 
     /**
-     * Register endform directive.
+     * Register @endform directive.
      *
      * @return void
      */
