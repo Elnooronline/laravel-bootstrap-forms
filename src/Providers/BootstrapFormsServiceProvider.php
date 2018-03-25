@@ -15,10 +15,14 @@ class BootstrapFormsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../views', 'BsForm');
+        $this->loadViewsFrom($this->srcPath('views'), 'BsForm');
 
         $this->publishes([
-            __DIR__.'/../views' => resource_path('views/vendor/BsForm'),
+            $this->srcPath('config/laravel-bootstrap-forms.php') => config_path('laravel-bootstrap-forms.php'),
+        ]);
+
+        $this->publishes([
+            $this->srcPath('views') => resource_path('views/vendor/BsForm'),
         ], 'BsForm');
 
         FormDirectives::register();
@@ -34,5 +38,14 @@ class BootstrapFormsServiceProvider extends ServiceProvider
         $this->app->bind('bootstrap.form', function () {
             return BsForm::getInstance();
         });
+
+        $this->mergeConfigFrom(
+            $this->srcPath('config/laravel-bootstrap-forms.php'), 'laravel-bootstrap-forms'
+        );
+    }
+    
+    private function srcPath($path)
+    {
+        return __DIR__.'/../'.$path;
     }
 }

@@ -2,12 +2,14 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Traits;
 
+use Elnooronline\LaravelBootstrapForms\Helpers\Locale;
+
 trait LocalizableComponent
 {
     /**
-     * @var string
+     * @var \Elnooronline\LaravelBootstrapForms\Helpers\Locale
      */
-    protected $localeName;
+    protected $locale;
 
     /**
      * Add the given lang to the name attribute.
@@ -16,10 +18,9 @@ trait LocalizableComponent
      * @param $name
      * @return $this
      */
-    public function locale($code, $name)
+    public function locale(Locale $locale = null)
     {
-        $this->localeCode = $code;
-        $this->localeName = $name;
+        $this->locale = $locale;
 
         $this->setDefaultLabel($this->name);
 
@@ -34,9 +35,20 @@ trait LocalizableComponent
      */
     protected function transformProperties(array $properties)
     {
-        return array_merge($properties, [
-            'name' => "{$this->name}:{$this->localeCode}",
-            'label' => "{$this->label} ({$this->localeName})",
-        ]);
+        $locale = optional($this->locale);
+
+        if ($locale->code) {
+            $properties = array_merge($properties, [
+                'name' => "{$this->name}:{$this->locale->code}",
+            ]);
+        }
+
+        if ($locale->name) {
+            $properties = array_merge($properties, [
+                'label' => "{$this->label} ({$this->locale->native})",
+            ]);
+        }
+
+        return $properties;
     }
 }

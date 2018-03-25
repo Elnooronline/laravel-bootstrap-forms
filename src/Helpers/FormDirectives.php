@@ -14,18 +14,20 @@ class FormDirectives
      */
     public static function register()
     {
-        collect(get_class_methods(RegisterFormDirectives::class))->each(function ($method) {
+        $instance = new RegisterFormDirectives;
+
+        collect(get_class_methods(RegisterFormDirectives::class))->each(function ($method) use ($instance) {
             if (Str::startsWith($method, 'register')) {
-                (new RegisterFormDirectives())->{$method}();
+                $instance->{$method}();
             }
         });
 
-        Blade::directive('eachlocale', function ($expression) {
-            return "<?php foreach(['ar', 'en'] as \$locale): ?>";
+        Blade::directive('multilangualForm', function () {
+            return "<?php foreach (BsForm::getLocales() as \$locale) { BsForm::locale(\$locale); ?>";
         });
 
-        Blade::directive('endeachlocale', function ($expression) {
-            return "<?php endforeach; ?>";
+        Blade::directive('endMultilangualForm', function () {
+            return "<?php BsForm::locale(null); } ?>";
         });
 
     }

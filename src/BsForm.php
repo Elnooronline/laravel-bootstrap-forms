@@ -2,8 +2,8 @@
 
 namespace Elnooronline\LaravelBootstrapForms;
 
-use Form;
 use Collective\Html\FormBuilder;
+use Elnooronline\LaravelBootstrapForms\Helpers\Locale;
 use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
 use Elnooronline\LaravelBootstrapForms\Components\FileComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TextComponent;
@@ -17,12 +17,25 @@ use Elnooronline\LaravelBootstrapForms\Components\SubmitComponent;
 use Elnooronline\LaravelBootstrapForms\Components\PasswordComponent;
 use Elnooronline\LaravelBootstrapForms\Components\CheckboxComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TextareaComponent;
+use Elnooronline\LaravelBootstrapForms\Contracts\Components\LocalizableComponent;
 
 class BsForm
 {
     use HasOpenAndClose;
 
     private $resource;
+
+    /**
+     * @var \Elnooronline\LaravelBootstrapForms\Helpers\Locale
+     */
+    protected $locale;
+
+    /**
+     * @var \Elnooronline\LaravelBootstrapForms\Helpers\Locale[]
+     */
+    protected $locales = [];
+
+    protected $defaultLocaleName;
 
     /**
      * @var array
@@ -52,18 +65,7 @@ class BsForm
      */
     private function __construct()
     {
-    }
-
-    /**
-     * @return static
-     */
-    public static function getInstance()
-    {
-        if ($instance = static::$instance) {
-            return $instance;
-        }
-
-        return static::$instance = new static();
+        $this->locales = Locale::all();
     }
 
     /**
@@ -83,14 +85,33 @@ class BsForm
     public function __call($name, $arguments)
     {
         if (isset($this->components[$name])) {
-            return (new $this->components[$name]($this->resource))->init(...$arguments);
+            $instance = new $this->components[$name]($this->resource);
+
+            if ($instance instanceof LocalizableComponent) {
+                $instance->locale($this->locale);
+            }
+
+            return $instance->init(...$arguments);
         }
         if (in_array($name, $this->getFormBuilderMethods())) {
             return app('form')->{$name}(...$arguments);
         }
-        $className = __CLASS__;
 
+        $className = __CLASS__;
         throw new MethodNotFoundException("method {$name} not found in {$className}!", $name, $className);
+    }
+
+    /**
+     * Set the default locale code.
+     *
+     * @param $code
+     * @return $this
+     */
+    public function locale(Locale $locale = null)
+    {
+        $this->locale = $locale;
+
+        return $this;
     }
 
     /**
@@ -102,11 +123,6 @@ class BsForm
         $this->resource = $resource;
 
         return $this;
-    }
-
-    private function __clone()
-    {
-        //
     }
 
     /**
@@ -124,5 +140,30 @@ class BsForm
             }
         }
         return $methodsList;
+    }
+
+    /**
+     * @return static
+     */
+    public static function getInstance()
+    {
+        if ($instance = static::$instance) {
+            return $instance;
+        }
+
+        return static::$instance = new static();
+    }
+
+    /**
+     * @return \Elnooronline\LaravelBootstrapForms\Helpers\Locale[]
+     */
+    public function getLocales()
+    {
+        return $this->locales;
+    }
+
+    private function __clone()
+    {
+        //
     }
 }
