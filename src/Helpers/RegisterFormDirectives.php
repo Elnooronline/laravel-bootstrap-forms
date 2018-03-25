@@ -8,8 +8,8 @@ class RegisterFormDirectives
 {
     public function registerMultilangualFormTabs()
     {
-        Blade::directive('multilangualFormTabs', function () {
-            $uniqid = uniqid('__multilangual');
+        Blade::directive('bsMultilangualFormTabs', function () {
+            $uniqid = uniqid('__multilangual', true);
 
             $initLoop = "\$__env->startComponent('BsForm::components.multilangual_form', ['uniqid' => '$uniqid']); \$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
 
@@ -21,7 +21,7 @@ class RegisterFormDirectives
 
     public function registerEndMultilangualFormTabs()
     {
-        Blade::directive('endMultilangualFormTabs', function () {
+        Blade::directive('endBsMultilangualFormTabs', function () {
             return '<?php $__env->stopPush(); endforeach; BsForm::locale(null); $__env->popLoop(); $loop = $__env->getLastLoop(); echo $__env->renderComponent(); ?>';
         });
     }

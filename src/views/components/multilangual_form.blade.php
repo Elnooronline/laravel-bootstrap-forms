@@ -1,11 +1,11 @@
-@php($id = '__multilangual-form-'.uniqid())
+@php($id = uniqid('__multilangual-form-', true))
 <div>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         @multilangualForm
         <li role="presentation" class="{{ $loop->index == 0 ? 'active' : '' }}">
             <a href="#{{ $id.$locale->code }}" aria-controls="{{ $id.$locale->code }}" role="tab" data-toggle="tab">
-                {{ $locale->native }}
+                {{ $locale->name }}
             </a>
         </li>
         @endMultilangualForm
