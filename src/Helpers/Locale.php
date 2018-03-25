@@ -4,13 +4,10 @@ namespace Elnooronline\LaravelBootstrapForms\Helpers;
 
 class Locale
 {
-    public $code;
-
     public $properties = [];
 
-    public function __construct($code, $properties)
+    public function __construct($properties)
     {
-        $this->code = $code;
         $this->properties = $properties;
     }
 
@@ -23,8 +20,8 @@ class Locale
     {
         $languages = config('laravel-bootstrap-forms.locales');
 
-        foreach ($languages as $code => $properties) {
-            $instances[] = new static($code, $properties);
+        foreach ($languages as $properties) {
+            $instances[] = new static($properties);
         }
 
         return $instances;

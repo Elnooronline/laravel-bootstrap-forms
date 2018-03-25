@@ -2,12 +2,14 @@
 
 return [
     'locales' => [
-        'ar' => [
+        [
+            'code' => 'ar',
             'native' => 'العربية',
             'name' => 'Arabic',
             'dir' => 'rtl',
         ],
-        'en' => [
+        [
+            'code' => 'en',
             'native' => 'English',
             'name' => 'English',
             'dir' => 'ltr',
