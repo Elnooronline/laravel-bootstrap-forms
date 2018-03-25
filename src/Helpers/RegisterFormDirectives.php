@@ -9,10 +9,11 @@ class RegisterFormDirectives
     public function registerMultilangualFormTabs()
     {
         Blade::directive('multilangualFormTabs', function () {
+            $uniqid = uniqid('__multilangual');
 
-            $initLoop = "\$__env->startComponent('multilangual_form'); \$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
+            $initLoop = "\$__env->startComponent('BsForm::components.multilangual_form', ['uniqid' => '$uniqid']); \$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
 
-            $iterateLoop = '$__env->startPush(\'__multilangualForm:\'.$locale->code); $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); BsForm::locale($locale);';
+            $iterateLoop = "\$__env->startPush('$uniqid'.\$locale->code); \$__env->incrementLoopIndices(); \$loop = \$__env->getLastLoop(); BsForm::locale(\$locale);";
 
             return "<?php {$initLoop} foreach(\$__currentLoopData as \$locale): {$iterateLoop} ?>";
         });

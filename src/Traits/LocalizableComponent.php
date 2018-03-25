@@ -12,6 +12,13 @@ trait LocalizableComponent
     protected $locale;
 
     /**
+     * Determine if the label will be translated or not.
+     *
+     * @var bool
+     */
+    protected $transformLabel = true;
+
+    /**
      * Add the given lang to the name attribute.
      *
      * @param $code
@@ -23,6 +30,17 @@ trait LocalizableComponent
         $this->locale = $locale;
 
         $this->setDefaultLabel($this->name);
+
+        return $this;
+    }
+
+    /**
+     * @param $transformLabel
+     * @return $this
+     */
+    public function transformLabel($transformLabel)
+    {
+        $this->transformLabel = $transformLabel;
 
         return $this;
     }
@@ -43,7 +61,7 @@ trait LocalizableComponent
             ]);
         }
 
-        if ($locale->name) {
+        if ($this->transformLabel && $locale->name) {
             $properties = array_merge($properties, [
                 'label' => "{$this->label} ({$this->locale->native})",
             ]);

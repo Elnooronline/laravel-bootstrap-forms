@@ -12,10 +12,10 @@
     </ul>
 
     <!-- Tab panes -->
-    <div class="tab-content">
+    <div class="tab-content" style="margin-top: 10px;">
         @multilangualForm
         <div role="tabpanel" class="tab-pane{{ $loop->index == 0 ? ' active' : '' }}" id="{{ $id.$locale->code }}">
-            @stack('__multilangualForm:'.$locale->code)
+            @stack($uniqid.$locale->code)
         </div>
         @endMultilangualForm
     </div>

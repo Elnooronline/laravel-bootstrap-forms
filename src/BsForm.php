@@ -35,8 +35,6 @@ class BsForm
      */
     protected $locales = [];
 
-    protected $defaultLocaleName;
-
     /**
      * @var array
      */
@@ -89,6 +87,10 @@ class BsForm
 
             if ($instance instanceof LocalizableComponent) {
                 $instance->locale($this->locale);
+
+                if ($this->locale) {
+                    $instance->transformLabel(false);
+                }
             }
 
             return $instance->init(...$arguments);
