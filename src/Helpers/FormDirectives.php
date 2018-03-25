@@ -21,14 +21,5 @@ class FormDirectives
                 $instance->{$method}();
             }
         });
-
-        Blade::directive('multilangualForm', function () {
-            return "<?php foreach (BsForm::getLocales() as \$locale) { BsForm::locale(\$locale); ?>";
-        });
-
-        Blade::directive('endMultilangualForm', function () {
-            return "<?php BsForm::locale(null); } ?>";
-        });
-
     }
 }

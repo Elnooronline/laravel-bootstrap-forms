@@ -6,6 +6,41 @@ use Illuminate\Support\Facades\Blade;
 
 class RegisterFormDirectives
 {
+    public function registerMultilangualFormTabs()
+    {
+        Blade::directive('multilangualFormTabs', function () {
+
+            $initLoop = "\$__env->startComponent('multilangual_form'); \$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
+
+            $iterateLoop = '$__env->startPush(\'__multilangualForm:\'.$locale->code); $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); BsForm::locale($locale);';
+
+            return "<?php {$initLoop} foreach(\$__currentLoopData as \$locale): {$iterateLoop} ?>";
+        });
+    }
+
+    public function registerEndMultilangualFormTabs()
+    {
+        Blade::directive('endMultilangualFormTabs', function () {
+            return '<?php $__env->stopPush(); endforeach; BsForm::locale(null); $__env->popLoop(); $loop = $__env->getLastLoop(); echo $__env->renderComponent(); ?>';
+        });
+    }
+    public function registerMultilangualForm()
+    {
+        Blade::directive('multilangualForm', function () {
+            $initLoop = "\$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
+
+            $iterateLoop = '$__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); BsForm::locale($locale);';
+
+            return "<?php {$initLoop} foreach(\$__currentLoopData as \$locale): {$iterateLoop} ?>";
+        });
+    }
+
+    public function registerEndMultilangualForm()
+    {
+        Blade::directive('endMultilangualForm', function () {
+            return '<?php endforeach; BsForm::locale(null); $__env->popLoop(); $loop = $__env->getLastLoop(); ?>';
+        });
+    }
     /**
      * Register formpost directive.
      *
