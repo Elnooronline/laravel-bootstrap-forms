@@ -29,14 +29,4 @@ abstract class TextualComponent extends BaseComponent
 
         return $this;
     }
-
-    /**
-     * The variables with registerd in view component.
-     *
-     * @return array
-     */
-    protected function viewComposer()
-    {
-        return [];
-    }
 }

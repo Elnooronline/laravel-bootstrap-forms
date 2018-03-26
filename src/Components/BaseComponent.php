@@ -97,13 +97,6 @@ abstract class BaseComponent implements Htmlable
     abstract public function init();
 
     /**
-     * The variables with registerd in view component.
-     *
-     * @return array
-     */
-    abstract protected function viewComposer();
-
-    /**
      * Set the default label for the input.
      *
      * @param $name
@@ -298,6 +291,16 @@ abstract class BaseComponent implements Htmlable
     }
 
     /**
+     * The variables with registerd in view component.
+     *
+     * @return array
+     */
+    protected function viewComposer()
+    {
+        return [];
+    }
+
+    /**
      * Transform the properties to be used in view.
      *
      * @param array $properties
@@ -308,6 +311,11 @@ abstract class BaseComponent implements Htmlable
         return $properties;
     }
 
+    /**
+     * Get component as a string of HTML.
+     *
+     * @return string
+     */
     public function toHtml()
     {
         return $this->render();
