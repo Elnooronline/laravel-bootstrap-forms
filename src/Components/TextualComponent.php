@@ -2,8 +2,12 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Components;
 
+use Elnooronline\LaravelBootstrapForms\Components\Traits\HasPlaceholder;
+
 abstract class TextualComponent extends BaseComponent
 {
+    use HasPlaceholder;
+
     /**
      * Initialized the input arguments.
      *
@@ -22,17 +26,6 @@ abstract class TextualComponent extends BaseComponent
         $this->setDefaultNote($name);
 
         $this->setDefaultPlaceholder($name);
-
-        return $this;
-    }
-
-    /**
-     * @param $placeholder
-     * @return $this
-     */
-    public function placeholder($placeholder)
-    {
-        $this->attributes['placeholder'] = $placeholder;
 
         return $this;
     }

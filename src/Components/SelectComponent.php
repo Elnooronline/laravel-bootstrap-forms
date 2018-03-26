@@ -2,8 +2,12 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Components;
 
+use Elnooronline\LaravelBootstrapForms\Components\Traits\HasPlaceholder;
+
 class SelectComponent extends BaseComponent
 {
+    use HasPlaceholder;
+
     /**
      * The component view path.
      *
