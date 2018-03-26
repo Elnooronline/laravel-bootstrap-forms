@@ -99,12 +99,11 @@ abstract class BaseComponent implements Htmlable
     /**
      * Set the default label for the input.
      *
-     * @param $name
      * @return void
      */
-    protected function setDefaultLabel($name)
+    protected function setDefaultLabel()
     {
-        $name = $this->getDefaultLabel($name);
+        $name = $this->nameWithoutBracketsAndLocaleForm();
 
         if (Lang::has($trans = "{$this->resource}.attributes.$name")) {
             $this->label = Lang::get($trans);
@@ -114,11 +113,12 @@ abstract class BaseComponent implements Htmlable
     /**
      * Set the default localed note (help-block) for the input.
      *
-     * @param $name
      * @return void
      */
-    protected function setDefaultNote($name)
+    protected function setDefaultNote()
     {
+        $name = $this->nameWithoutBracketsAndLocaleForm();
+
         if (Lang::has($trans = "{$this->resource}.notes.$name")) {
             $this->note = Lang::get($trans);
         }
@@ -127,11 +127,12 @@ abstract class BaseComponent implements Htmlable
     /**
      * Set the default localed placeholder for the input.
      *
-     * @param $name
      * @return void
      */
-    protected function setDefaultPlaceholder($name)
+    protected function setDefaultPlaceholder()
     {
+        $name = $this->nameWithoutBracketsAndLocaleForm();
+
         if (Lang::has($trans = "{$this->resource}.placeholders.$name")) {
             $this->attributes['placeholder'] = Lang::get($trans);
         }
@@ -160,16 +161,16 @@ abstract class BaseComponent implements Htmlable
     }
 
     /**
-     *
-     * @param $name
      * @return string
      */
-    protected function getDefaultLabel($name)
+    protected function nameWithoutBrackets()
     {
-        $pattern = "/([a-zA-Z0-9]+)(:.*)?(\[(?:.*)\])?/";
-        $name = preg_replace($pattern, "$1", $name);
+        return str_replace('[]', '', $this->name);
+    }
 
-        return $name;
+    protected function nameWithoutBracketsAndLocaleForm()
+    {
+        return preg_replace('/([a-zA-Z0-9]+)(:.*)?(\[(?:.*)\])?/', "$1", $this->name);
     }
 
     /**
@@ -279,6 +280,7 @@ abstract class BaseComponent implements Htmlable
         $properties = array_merge([
             'label' => $this->label,
             'name' => $this->name,
+            'nameWithoutBrackets' => $this->nameWithoutBrackets(),
             'value' => $this->value,
             'note' => $this->note,
             'attributes' => $this->attributes,

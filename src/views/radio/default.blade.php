@@ -1,12 +1,12 @@
-<div class="form-group{{ $errors->has($name) ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has($nameWithoutBrackets) ? ' has-error' : '' }}">
     <div class="checkbox">
         <label>
             {{ Form::radio($name, $value, $checked) }} {{ $label }}
         </label>
     </div>
     @if($inlineValidation)
-        @if($errors->has($name))
-            <strong class="help-block">{{ $errors->first($name) }}</strong>
+        @if($errors->has($nameWithoutBrackets))
+            <strong class="help-block">{{ $errors->first($nameWithoutBrackets) }}</strong>
         @else
             <strong class="help-block">{{ $note }}</strong>
         @endif
