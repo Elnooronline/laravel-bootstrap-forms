@@ -26,9 +26,9 @@ class CheckboxComponent extends BaseComponent
      */
     public function init($name = null, $value = null, $checked = false)
     {
-        $this->name = $name;
+        $this->name($name);
 
-        $this->value = $value ?: old($name);
+        $this->value($value ?: old($name));
 
         $this->checked = $checked;
 

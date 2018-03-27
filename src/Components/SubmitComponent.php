@@ -28,8 +28,8 @@ class SubmitComponent extends BaseComponent
      */
     public function init($label = null, $name = null)
     {
-        $this->label = $label;
-        $this->name = $name;
+        $this->name($name);
+        $this->label($label);
 
         return $this;
     }

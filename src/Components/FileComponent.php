@@ -20,7 +20,7 @@ class FileComponent extends BaseComponent
      */
     public function init($name = null)
     {
-        $this->name = $name;
+        $this->name($name);
 
         $this->setDefaultLabel($name);
 

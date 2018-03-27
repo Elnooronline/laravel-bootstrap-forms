@@ -22,6 +22,13 @@ abstract class BaseComponent implements Htmlable
     protected $name;
 
     /**
+     * The input's name attribute.
+     *
+     * @var string
+     */
+    protected $nameWithoutBrackets;
+
+    /**
      * The input's value attribute.
      *
      * @var string
@@ -145,6 +152,7 @@ abstract class BaseComponent implements Htmlable
     public function name($name)
     {
         $this->name = $name;
+        $this->nameWithoutBrackets = str_replace('[]', '', $name);
 
         return $this;
     }
@@ -161,13 +169,8 @@ abstract class BaseComponent implements Htmlable
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    protected function nameWithoutBrackets()
-    {
-        return str_replace('[]', '', $this->name);
-    }
-
     protected function nameWithoutBracketsAndLocaleForm()
     {
         return preg_replace('/([a-zA-Z0-9]+)(:.*)?(\[(?:.*)\])?/', "$1", $this->name);
@@ -280,7 +283,7 @@ abstract class BaseComponent implements Htmlable
         $properties = array_merge([
             'label' => $this->label,
             'name' => $this->name,
-            'nameWithoutBrackets' => $this->nameWithoutBrackets(),
+            'nameWithoutBrackets' => $this->nameWithoutBrackets,
             'value' => $this->value,
             'note' => $this->note,
             'attributes' => $this->attributes,

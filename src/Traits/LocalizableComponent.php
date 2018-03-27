@@ -58,6 +58,7 @@ trait LocalizableComponent
         if ($locale->code) {
             $properties = array_merge($properties, [
                 'name' => "{$this->name}:{$this->locale->code}",
+                'nameWithoutBrackets' => "{$this->nameWithoutBrackets}:{$this->locale->code}",
             ]);
         }
 

@@ -17,9 +17,9 @@ abstract class TextualComponent extends BaseComponent
      */
     public function init($name = null, $value = null)
     {
-        $this->name = $name;
+        $this->name($name);
 
-        $this->value = $value ?: old($name);
+        $this->value($value ?: old($name));
 
         $this->setDefaultLabel();
 

@@ -29,9 +29,9 @@ class SelectComponent extends BaseComponent
      */
     public function init($name = null, $options = [], $value = null)
     {
-        $this->name = $name;
+        $this->name($name);
 
-        $this->value = $value ?: old($name);
+        $this->value($value ?: old($name));
 
         $this->options = $options;
 
