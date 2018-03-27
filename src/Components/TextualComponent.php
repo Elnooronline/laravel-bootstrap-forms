@@ -21,11 +21,11 @@ abstract class TextualComponent extends BaseComponent
 
         $this->value = $value ?: old($name);
 
-        $this->setDefaultLabel($name);
+        $this->setDefaultLabel();
 
-        $this->setDefaultNote($name);
+        $this->setDefaultNote();
 
-        $this->setDefaultPlaceholder($name);
+        $this->setDefaultPlaceholder();
 
         return $this;
     }
