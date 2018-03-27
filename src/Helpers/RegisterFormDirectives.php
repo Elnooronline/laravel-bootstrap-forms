@@ -2,6 +2,7 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Helpers;
 
+use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Blade;
 
 class RegisterFormDirectives
@@ -14,7 +15,7 @@ class RegisterFormDirectives
     public function registerMultilangualFormTabs()
     {
         Blade::directive('bsMultilangualFormTabs', function () {
-            $uniqid = uniqid('__multilangual', true);
+            $uniqid = Uuid::uuid1();
 
             $initLoop = "\$__env->startComponent('BsForm::components.multilangual_form', ['uniqid' => '$uniqid']); \$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
 
