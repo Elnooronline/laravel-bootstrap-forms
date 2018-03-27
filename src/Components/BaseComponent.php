@@ -29,6 +29,13 @@ abstract class BaseComponent implements Htmlable
     protected $nameWithoutBrackets;
 
     /**
+     * The input's name attribute.
+     *
+     * @var string
+     */
+    protected $nameHasBrackets = false;
+
+    /**
      * The input's value attribute.
      *
      * @var string
@@ -153,6 +160,8 @@ abstract class BaseComponent implements Htmlable
     {
         $this->name = $name;
         $this->nameWithoutBrackets = str_replace('[]', '', $name);
+
+        $this->nameHasBrackets = $this->name != $this->nameWithoutBrackets;
 
         return $this;
     }

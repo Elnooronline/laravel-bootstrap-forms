@@ -55,11 +55,16 @@ trait LocalizableComponent
     {
         $locale = optional($this->locale);
 
+        $nameHasBrackets = $this->nameHasBrackets;
+
         if ($locale->code) {
-            $properties = array_merge($properties, [
-                'name' => "{$this->name}:{$this->locale->code}",
-                'nameWithoutBrackets' => "{$this->nameWithoutBrackets}:{$this->locale->code}",
-            ]);
+            $properties['nameWithoutBrackets'] = "{$this->nameWithoutBrackets}:{$this->locale->code}";
+
+            if ($nameHasBrackets) {
+                $properties['name'] = "{$this->nameWithoutBrackets}:{$this->locale->code}[]";
+            } else {
+                $properties['name'] = "{$this->nameWithoutBrackets}:{$this->locale->code}";
+            }
         }
 
         if ($this->transformLabel && $locale->name) {
