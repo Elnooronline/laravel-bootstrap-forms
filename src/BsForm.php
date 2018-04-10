@@ -181,10 +181,11 @@ class BsForm
         $methods = $class->getMethods(\ReflectionMethod::IS_PUBLIC);
         $methodsList = [];
         foreach ($methods as $method) {
-            if (!starts_with($method->getName(), '__')) {
+            if (! starts_with($method->getName(), '__')) {
                 $methodsList[] = $method->getName();
             }
         }
+
         return $methodsList;
     }
 
