@@ -196,7 +196,7 @@ Generating A Text Input
 # # Using Resource With Localed Fields
 You may add localed labels, notes and placeholders using resource option as well:
 ```
-BsForm::resource('users');
+{{ BsForm::resource('users') }}
 ```
 > You must add `users.php` file to the `resources/lang/en/` path and set the default attributes and notes, placeholders as well:
 ```
@@ -256,6 +256,17 @@ you can copy `default.blade.php` file as `custom.blade.php` and use custom style
 ```
 {{ BsForm::text('name')->style('custom') }}
 ```
+you can also set the style globaly with `BsForm::style()` method before the form open as well
+```
+{{ BsForm::style('custom') }}
+```
+
+or 
+
+```
+{{ BsForm::resource('users')->style('custom') }}
+```
+
 <a name="custom-component"></a>
 # # Add Custom Component
 You may add new component class extends `BaseComponent` and regoster it in your `boot()` method in `AppServiceProvider` class as well:
