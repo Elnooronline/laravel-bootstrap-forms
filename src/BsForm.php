@@ -40,7 +40,7 @@ class BsForm
      *
      * @var string
      */
-    protected $style = 'default';
+    protected $style;
 
     /**
      * Show inline validation errors.
@@ -107,7 +107,9 @@ class BsForm
                 }
             }
 
-            $instance->style($this->style);
+            if ($this->style) {
+                $instance->style($this->style);
+            }
 
             $instance->inlineValidation($this->inlineValidation);
 
@@ -151,7 +153,7 @@ class BsForm
      * @param $style
      * @return $this
      */
-    public function style($style)
+    public function style($style = null)
     {
         $this->style = $style;
 
