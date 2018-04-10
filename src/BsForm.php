@@ -161,6 +161,18 @@ class BsForm
     }
 
     /**
+     * Clear the components style.
+     *
+     * @return $this
+     */
+    public function clearStyle()
+    {
+        $this->style();
+
+        return $this;
+    }
+
+    /**
      * Set the input inline validation errors option.
      *
      * @param bool $bool
