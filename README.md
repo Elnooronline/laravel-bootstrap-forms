@@ -196,7 +196,7 @@ Generating A Text Input
 # # Using Resource With Localed Fields
 You may add localed labels, notes and placeholders using resource option as well:
 ```
-{{ BsForm::resource('users') }}
+@php(BsForm::resource('users'))
 ```
 > You must add `users.php` file to the `resources/lang/en/` path and set the default attributes and notes, placeholders as well:
 ```
@@ -258,7 +258,7 @@ you can copy `default.blade.php` file as `custom.blade.php` and use custom style
 ```
 you can also set the style globaly with `BsForm::style()` method before the form open as well
 ```
-{{ BsForm::style('custom') }}
+@php(BsForm::resource('users')->style('custom'))
 ```
 
 or 

@@ -213,9 +213,4 @@ class BsForm
     {
         //
     }
-
-    public function __toString()
-    {
-        return '';
-    }
 }
