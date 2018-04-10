@@ -45,6 +45,9 @@ You may also open forms with method as well:
  {{ BsForm::put('foo/bar') }}
  {{ BsForm::patch('foo/bar') }}
  {{ BsForm::delete('foo/bar') }}
+ {{ BsForm::model($model, 'foo/bar') }}
+ {{ BsForm::putModel($model, 'foo/bar') }}
+ {{ BsForm::patchModel($model, 'foo/bar') }}
  ```
 You may also open forms that point to named routes or controller actions:
 ```
