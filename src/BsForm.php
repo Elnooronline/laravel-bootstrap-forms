@@ -36,6 +36,20 @@ class BsForm
     protected $locales = [];
 
     /**
+     * The component style.
+     *
+     * @var string
+     */
+    protected $style = 'default';
+
+    /**
+     * Show inline validation errors.
+     *
+     * @var bool
+     */
+    protected $inlineValidation = true;
+
+    /**
      * @var array
      */
     protected $components = [
@@ -93,6 +107,10 @@ class BsForm
                 }
             }
 
+            $instance->style($this->style);
+
+            $instance->inlineValidation($this->inlineValidation);
+
             return $instance->init(...$arguments);
         }
         if (in_array($name, $this->getFormBuilderMethods())) {
@@ -123,6 +141,32 @@ class BsForm
     public function resource($resource)
     {
         $this->resource = $resource;
+
+        return $this;
+    }
+
+    /**
+     * Set the components style.
+     *
+     * @param $style
+     * @return $this
+     */
+    public function style($style)
+    {
+        $this->style = $style;
+
+        return $this;
+    }
+
+    /**
+     * Set the input inline validation errors option.
+     *
+     * @param bool $bool
+     * @return $this
+     */
+    public function inlineValidation($bool = true)
+    {
+        $this->inlineValidation = $bool;
 
         return $this;
     }
