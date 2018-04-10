@@ -258,13 +258,33 @@ you can copy `default.blade.php` file as `custom.blade.php` and use custom style
 ```
 you can also set the style globaly with `BsForm::style()` method before the form open as well
 ```
-@php(BsForm::resource('users')->style('custom'))
+@php(BsForm::style('custom'))
 ```
 
 or 
 
 ```
-{{ BsForm::resource('users')->style('custom') }}
+@php(BsForm::resource('users')->style('custom'))
+```
+
+to reset the custom style to the default you should call `clearStyle()` method as well
+```
+@php(BsForm::clearStyle())
+```
+
+For Example :
+```
+@php(BsForm::resource('users')->style('web'))
+{{ BsForm::model($user, route('users.update', $user)) }}
+	{{-- All fields here uses web style  --}}
+	{{ BsForm::text('name') }} 
+	{{ BsForm::text('email') }} 
+@php(BsForm::clearStyle())
+	{{-- All fields after clearing uses default style  --}}
+	{{ BsForm::text('phone') }} 
+	{{ BsForm::textarea('address') }} 
+	{{ BsForm::submit()->style('inline') }} 
+{{ BsForm::close() }}
 ```
 
 <a name="custom-component"></a>
