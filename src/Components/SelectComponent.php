@@ -31,7 +31,7 @@ class SelectComponent extends BaseComponent
     {
         $this->name($name);
 
-        $this->value($value ?: old($name));
+        $this->value($value ?: old($name) ?: request($name));
 
         $this->options = $options;
 
