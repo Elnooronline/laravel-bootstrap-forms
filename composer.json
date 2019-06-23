@@ -1,6 +1,6 @@
 {
     "name": "elnooronline/laravel-bootstrap-forms",
-    "description": "TODO",
+    "description": "Provides an easy way to use bootstrap components within your Laravel projects.",
     "type": "package",
     "license": "MIT",
     "authors": [
