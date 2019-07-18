@@ -73,6 +73,13 @@ class BsForm
     protected static $instance;
 
     /**
+     * The key to be used for the view error bag.
+     *
+     * @var string
+     */
+    protected $errorBag = 'default';
+
+    /**
      * BsForm constructor.
      */
     private function __construct()
@@ -97,7 +104,8 @@ class BsForm
     public function __call($name, $arguments)
     {
         if (isset($this->components[$name])) {
-            $instance = new $this->components[$name]($this->resource);
+            $instance = (new $this->components[$name]($this->resource))
+                ->errorBag($this->errorBag);
 
             if ($instance instanceof LocalizableComponent) {
                 $instance->locale($this->locale);
@@ -148,6 +156,19 @@ class BsForm
     }
 
     /**
+     * The key to be used for the view error bag.
+     *
+     * @param  string  $bag
+     * @return $this
+     */
+    public function errorBag($bag = 'default')
+    {
+        $this->errorBag = $bag;
+
+        return $this;
+    }
+
+    /**
      * Set the components style.
      *
      * @param $style
@@ -175,7 +196,7 @@ class BsForm
     /**
      * Set the input inline validation errors option.
      *
-     * @param bool $bool
+     * @param  bool  $bool
      * @return $this
      */
     public function inlineValidation($bool = true)

@@ -220,6 +220,17 @@ return [
     ...
 ];
 ```
+
+<a name="errorBug"></a>
+# # Using Custom Error Message Bag
+> You can using custom error bag to display validation errors without any conflict.
+```
+// Default error bag
+BsForm::errorBag('default')
+
+// Other error bag
+BsForm::errorBag('create')
+```
 <a name="example"></a>
 # # Example Register Form
 ```

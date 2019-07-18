@@ -92,6 +92,13 @@ abstract class BaseComponent implements Htmlable
     protected $inlineValidation = true;
 
     /**
+     * The key to be used for the view error bag.
+     *
+     * @var string
+     */
+    protected $errorBag = 'default';
+
+    /**
      * Set resource name property.
      *
      * @param $resource
@@ -104,8 +111,8 @@ abstract class BaseComponent implements Htmlable
     /**
      * Initialized the input arguments.
      *
-     * @param null $name
-     * @param null $value
+     * @param  null  $name
+     * @param  null  $value
      * @return $this
      */
     abstract public function init();
@@ -162,6 +169,19 @@ abstract class BaseComponent implements Htmlable
         $this->nameWithoutBrackets = str_replace('[]', '', $name);
 
         $this->nameHasBrackets = $this->name != $this->nameWithoutBrackets;
+
+        return $this;
+    }
+
+    /**
+     * The key to be used for the view error bag.
+     *
+     * @param  string  $bag
+     * @return $this
+     */
+    public function errorBag($bag = 'default')
+    {
+        $this->errorBag = $bag;
 
         return $this;
     }
@@ -225,8 +245,8 @@ abstract class BaseComponent implements Htmlable
     /**
      * Add custom attribute.
      *
-     * @param string|array $key
-     * @param null $value
+     * @param  string|array  $key
+     * @param  null  $value
      * @return $this
      */
     public function attribute($key, $value = null)
@@ -272,7 +292,7 @@ abstract class BaseComponent implements Htmlable
     /**
      * Set the input inline validation errors option.
      *
-     * @param bool $bool
+     * @param  bool  $bool
      * @return $this
      */
     public function inlineValidation($bool = true)
@@ -297,6 +317,7 @@ abstract class BaseComponent implements Htmlable
             'note' => $this->note,
             'attributes' => $this->attributes,
             'inlineValidation' => $this->inlineValidation,
+            'errorBag' => $this->errorBag,
         ], $this->viewComposer());
 
         return view($this->getViewPath())
@@ -317,7 +338,7 @@ abstract class BaseComponent implements Htmlable
     /**
      * Transform the properties to be used in view.
      *
-     * @param array $properties
+     * @param  array  $properties
      * @return array
      */
     protected function transformProperties(array $properties)

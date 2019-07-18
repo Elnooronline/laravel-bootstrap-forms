@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static  \Elnooronline\LaravelBootstrapForms\BsForm style($style = null)
  * @method static  \Elnooronline\LaravelBootstrapForms\BsForm clearStyle()
  * @method static  \Elnooronline\LaravelBootstrapForms\BsForm inlineValidation($bool = true)
+ * @method static  \Elnooronline\LaravelBootstrapForms\BsForm errorBag($bag = 'default')
  * @method static  \Illuminate\Support\HtmlString close()
  *
  * @package Elnooronline\LaravelBootstrapForms\Facades
