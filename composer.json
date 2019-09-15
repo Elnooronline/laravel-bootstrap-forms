@@ -5,6 +5,11 @@
     "license": "MIT",
     "authors": [
         {
+            "name": "Ahmed Al-Shahawi",
+            "email": "alshahawi@outlook.com",
+            "role": "Developer"
+        },
+        {
             "name": "Ahmed Fathy",
             "email": "aliraqi.dev@gmail.com"
         }
