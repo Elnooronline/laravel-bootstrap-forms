@@ -2,6 +2,7 @@
 
 namespace Elnooronline\LaravelBootstrapForms;
 
+use Illuminate\Support\Str;
 use Collective\Html\FormBuilder;
 use Elnooronline\LaravelBootstrapForms\Helpers\Locale;
 use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
@@ -216,7 +217,7 @@ class BsForm
         $methods = $class->getMethods(\ReflectionMethod::IS_PUBLIC);
         $methodsList = [];
         foreach ($methods as $method) {
-            if (! starts_with($method->getName(), '__')) {
+            if (! Str::startsWith($method->getName(), '__')) {
                 $methodsList[] = $method->getName();
             }
         }
