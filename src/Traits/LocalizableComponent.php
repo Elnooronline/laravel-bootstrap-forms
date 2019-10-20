@@ -2,10 +2,18 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Traits;
 
+use Astrotomic\Translatable\Validation\RuleFactory;
 use Elnooronline\LaravelBootstrapForms\Helpers\Locale;
 
 trait LocalizableComponent
 {
+    public function __construct()
+    {
+        if (! class_exists(RuleFactory::class)) {
+            throw new \Exception('Translatable package is not installed please install it: "composer require astrotomic/laravel-translatable"');
+        }
+    }
+
     /**
      * @var \Elnooronline\LaravelBootstrapForms\Helpers\Locale
      */
@@ -58,12 +66,24 @@ trait LocalizableComponent
         $nameHasBrackets = $this->nameHasBrackets;
 
         if ($locale->code) {
-            $properties['nameWithoutBrackets'] = "{$this->nameWithoutBrackets}:{$this->locale->code}";
+            $prefix = config('translatable.rule_factory.prefix');
+            $suffix = config('translatable.rule_factory.suffix');
+            $localedName = array_keys(
+                RuleFactory::make(
+                    [$prefix.$properties['nameWithoutBrackets'].$suffix => null],
+                    null,
+                    null,
+                    null,
+                    [$this->locale->code]
+                )
+            )[0];
+
+            $properties['nameWithoutBrackets'] = $localedName;
 
             if ($nameHasBrackets) {
-                $properties['name'] = "{$this->nameWithoutBrackets}:{$this->locale->code}[]";
+                $properties['name'] = "{$localedName}[]";
             } else {
-                $properties['name'] = "{$this->nameWithoutBrackets}:{$this->locale->code}";
+                $properties['name'] = $localedName;
             }
         }
 
