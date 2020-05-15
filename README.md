@@ -17,6 +17,7 @@
 - [Example Register Form](#example)
 - [Add Custom Style To The Component](#custom-style)
 - [Using Multilingual Form Tabs](#multilingual)
+- [Manage Locales](#locales)
 - [Using Bootstrap 3](#bootstrap3)
 - [Add Custom Component](#custom-component)
 
@@ -330,6 +331,40 @@ Category::create([
 
 // with laravel-bootstrap-forms
 Category::create($request->all());
+```
+
+<a name="locales"></a>
+# # Manage Locales
+
+> You can add your supported locales in `locales.php` config file. you will get it using the following command:
+
+```bash
+php artisan vendor:publish --tag=locales:config
+```
+```php
+<?php
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Application Locales
+    |--------------------------------------------------------------------------
+    |
+    | Contains an array with the applications available locales.
+    |
+    */
+    'en' => [
+        'code' => 'en',
+        'name' => 'English',
+        'dir' => 'ltr',
+        'flag' => '/images/flags/us.png'
+    ],
+    'ar' => [
+        'code' => 'ar',
+        'name' => 'العربية',
+        'dir' => 'rtl',
+        'flag' => '/images/flags/sa.png'
+    ],
+];
 ```
 
 <a name="bootstrap3"></a>
