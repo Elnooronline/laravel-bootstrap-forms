@@ -244,6 +244,32 @@ BsForm::errorBag('create')
 {{ BsForm::close() }}
 ```
 <a name="custom-style"></a>
+# # Using Multilingual Form Tabs
+```blade
+{{ BsForm::post(route('categories.store')) }}
+	@bsMultilangualFormTabs
+        {{ BsForm::text('name') }}
+	@endBsMultilangualFormTabs
+
+	{{ BsForm::submit()->danger() }}
+{{ BsForm::close() }}
+```
+> Note : the input name inside `@bsMultilangualFormTabs` and `@endBsMultilangualFormTabs` suffix with `:{lang}`.
+>
+> Ex. if your supported language is `ar` & `en` the input will named with `name:ar` & `name:en`.
+>
+> You should use [Astrotomic/laravel-translatable](https://github.com/Astrotomic/laravel-translatable) and configure it's rule_factory with key format `\Astrotomic\Translatable\Validation\RuleFactory::FORMAT_KEY` to fill the multilingual data like the following example.
+
+```php
+Category::create([
+    'name:ar' => 'سيارات',
+    'name:en' => 'Cars',
+]);
+
+// with laravel-bootstrap-forms
+Category::create($request->all());
+```
+
 # # Add Custom Style To The Component
 run the `vendor:publish` artusan command to override components views as well.
 ```
