@@ -8,7 +8,10 @@
            href="#{{ $tabuniqid.$locale->code }}"
            role="tab"
            aria-controls="{{ $tabuniqid.$locale->code }}"
-           aria-selected="{{ $loop->index == 0 ? 'true' : 'false' }}">{{ $locale->native }}</a>
+           aria-selected="{{ $loop->index == 0 ? 'true' : 'false' }}">
+            <img src="{{ $locale->flag }}" class="mx-1" alt="">
+            {{ $locale->name }}
+        </a>
     </li>
     @endMultilangualForm
 </ul>

@@ -2,12 +2,10 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Traits;
 
-use Elnooronline\LaravelBootstrapForms\Helpers\Locale;
-
 trait LocalizableComponent
 {
     /**
-     * @var \Elnooronline\LaravelBootstrapForms\Helpers\Locale
+     * @var array|null
      */
     protected $locale;
 
@@ -21,11 +19,10 @@ trait LocalizableComponent
     /**
      * Add the given lang to the name attribute.
      *
-     * @param $code
-     * @param $name
+     * @param array|null $locale
      * @return $this
      */
-    public function locale(Locale $locale = null)
+    public function locale($locale = null)
     {
         $this->locale = $locale;
 

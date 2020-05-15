@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Elnooronline\LaravelBootstrapForms\Components\SubmitComponent submit($label = null, $name = null)
  * @method static  \Elnooronline\LaravelBootstrapForms\BsForm open($url, $attributes = [])
  * @method static  \Elnooronline\LaravelBootstrapForms\BsForm resource($resource)
- * @method static  \Elnooronline\LaravelBootstrapForms\BsForm locale($locale = null)
+ * @method static  array|null locale($locale = null)
  * @method static  \Elnooronline\LaravelBootstrapForms\BsForm style($style = null)
  * @method static  \Elnooronline\LaravelBootstrapForms\BsForm clearStyle()
  * @method static  \Elnooronline\LaravelBootstrapForms\BsForm inlineValidation($bool = true)

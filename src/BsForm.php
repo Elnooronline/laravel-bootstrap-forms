@@ -2,9 +2,9 @@
 
 namespace Elnooronline\LaravelBootstrapForms;
 
+use Elnooronline\LaravelLocales\Facades\Locales;
 use Illuminate\Support\Str;
 use Collective\Html\FormBuilder;
-use Elnooronline\LaravelBootstrapForms\Helpers\Locale;
 use Elnooronline\LaravelBootstrapForms\Traits\HasOpenAndClose;
 use Elnooronline\LaravelBootstrapForms\Components\FileComponent;
 use Elnooronline\LaravelBootstrapForms\Components\TextComponent;
@@ -27,12 +27,12 @@ class BsForm
     private $resource;
 
     /**
-     * @var \Elnooronline\LaravelBootstrapForms\Helpers\Locale
+     * @var array|null
      */
     protected $locale;
 
     /**
-     * @var \Elnooronline\LaravelBootstrapForms\Helpers\Locale[]
+     * @var array
      */
     protected $locales = [];
 
@@ -85,7 +85,7 @@ class BsForm
      */
     private function __construct()
     {
-        $this->locales = Locale::all();
+        $this->locales = Locales::get();
     }
 
     /**
@@ -135,10 +135,10 @@ class BsForm
     /**
      * Set the default locale code.
      *
-     * @param $code
+     * @param array|null $locale
      * @return $this
      */
-    public function locale(Locale $locale = null)
+    public function locale($locale = null)
     {
         $this->locale = $locale;
 
@@ -238,7 +238,7 @@ class BsForm
     }
 
     /**
-     * @return \Elnooronline\LaravelBootstrapForms\Helpers\Locale[]
+     * @return array
      */
     public function getLocales()
     {

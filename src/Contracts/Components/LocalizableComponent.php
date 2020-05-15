@@ -2,9 +2,13 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Contracts\Components;
 
-use Elnooronline\LaravelBootstrapForms\Helpers\Locale;
-
 interface LocalizableComponent
 {
-    public function locale(Locale $locale = null);
+    /**
+     * Add the given lang to the name attribute.
+     *
+     * @param array|null $locale
+     * @return $this
+     */
+    public function locale($locale = null);
 }

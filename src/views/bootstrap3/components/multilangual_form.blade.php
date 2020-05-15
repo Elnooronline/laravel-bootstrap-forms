@@ -4,7 +4,8 @@
         @multilangualForm
         <li role="presentation" class="{{ $loop->index == 0 ? 'active' : '' }}">
             <a href="#{{ $uniqid.$locale->code }}" aria-controls="{{ $uniqid.$locale->code }}" role="tab" data-toggle="tab">
-                {{ $locale->native }}
+                <img src="{{ $locale->flag }}" alt="">
+                {{ $locale->name }}
             </a>
         </li>
         @endMultilangualForm
