@@ -340,6 +340,19 @@ Category::create($request->all());
 ```bash
 php artisan vendor:publish --tag=laravel-bootstrap-forms.config
 ```
+```php
+<?php
+
+return [
+    /**
+     * The path of form components views.
+     *
+     * - 'BsForm::bootstrap4'  - Bootstrap 4
+     * - 'BsForm::bootstrap3'  - Bootstrap 3
+     */
+    'views' => 'BsForm::bootstrap3',
+];
+```
 
 > After change bootstrap version you should clear the cached view files using the `view:clear` artisan command.
 
