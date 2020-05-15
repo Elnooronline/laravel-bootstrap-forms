@@ -21,26 +21,27 @@
 
 <a name="installation"></a>
 # # Installation
-Begin by installing this package through Composer. Edit your project's `composer.json` file to require `elnooronline/laravel-bootstrap-forms`.
-```
+> Begin by installing this package through Composer. Edit your project's `composer.json` file to require `elnooronline/laravel-bootstrap-forms`.
+```bash
 composer require elnooronline/laravel-bootstrap-forms
 ```
 <a name="opening-a-form"></a>
 # # Opening A Form
-```
+```blade
 {{ BsForm::open(['url' => 'foo/bar']) }}
 //
 {{ BsForm::close() }}
 ```
-By default, a `POST` method will be assumed; however, you are free to specify another method:
-```
+> By default, a `POST` method will be assumed; however, you are free to specify another method:
+
+```blade
 {{ BsForm::open(['url' => 'foo/bar', 'method' => 'post']) }}
 ```
 
->Note: Since HTML forms only support `POST` and `GET`, `PUT` and `DELETE` methods will be spoofed by automatically adding a `_method` hidden field to your form.
+> Note: Since HTML forms only support `POST` and `GET`, `PUT` and `DELETE` methods will be spoofed by automatically adding a `_method` hidden field to your form.
 
-You may also open forms with method as well:
- ```
+> You may also open forms with method as well:
+ ```blade
  {{ BsForm::get('foo/bar') }}
  {{ BsForm::post('foo/bar') }}
  {{ BsForm::put('foo/bar') }}
@@ -50,157 +51,204 @@ You may also open forms with method as well:
  {{ BsForm::putModel($model, 'foo/bar') }}
  {{ BsForm::patchModel($model, 'foo/bar') }}
  ```
-You may also open forms that point to named routes or controller actions:
-```
+> You may also open forms that point to named routes or controller actions:
+
+```blade
 {{ BsForm::open(['route' => 'route.name']) }}
 {{ BsForm::open(['action' => 'Controller@method']) }}
 ```
-You may pass in route parameters as well:
-```
+
+>You may pass in route parameters as well:
+
+```blade
 {{ BsForm::open(['route' => ['route.name', $user->id]]) }}
 {{ BsForm::open(['action' => ['Controller@method', $user->id]]) }}
 ```
+
 <a name="fields"></a>
 # # Text, Text Area, Date, Number & Password Fields
-Generating A Text Input
-```
+
+> Generating A Text Input
+
+```blade
 {{ BsForm::text('username') }}
 ```
+
 ## Specifying A Default Value
-```
+
+```blade
 {{ BsForm::text('email', 'example@gmail.com') }}
 {{ BsForm::text('email')->value('example@gmail.com') }}
 ```
->Note: The date, number and textarea methods have the same signature as the text method.
+
+> Note: The date, number and textarea methods have the same signature as the text method.
+
  ## Generating A Password Input
-```
+
+```blade
 {{ BsForm::password('password', ['class' => 'awesome']) }}
 {{ BsForm::password('password')->attr('class', 'awesome') }}
 ```
+
 ## Generating Other Inputs
-```
+
+```blade
 {{ BsForm::email($name)->value($value)->label($label) }}
 {{ BsForm::file($name)->label('Upload File') }}
 ```
+
 <a name="checkboxes"></a>
 # # Checkboxes and Radio Buttons
 ## Generating A Checkbox Or Radio Input
-```
+
+```blade
 {{ BsForm::checkbox('name', 'value')->checked(false) }}
 {{ BsForm::checkbox('name')->value('value')->checked(false) }}
 
 {{ BsForm::radio('name', 'value')->checked(false)->label('label') }}
 {{ BsForm::radio('name')->value('value')->checked(false)->label('label') }}
 ```
+
 <a name="dropdown"></a>
 # # Drop-Down Lists
-```
+
+```blade
 {{ BsForm::select('size', ['L' => 'Large', 'S' => 'Small']) }}
 {{ BsForm::select('size')->options(['L' => 'Large', 'S' => 'Small']) }}
 ```
+
 ## Generating A Drop-Down List With Selected Default
-```
+
+```blade
 {{ BsForm::select('size')->options(['L' => 'Large', 'S' => 'Small'])->value('S') }}
 ```
+
 ## Generating a Drop-Down List With an Empty Placeholder
-```
+
+```blade
 {{ BsForm::select('size')->options(['L' => 'Large', 'S' => 'Small'])->placeholder('Select Size') }}
 ```
+
 ## Generating A Grouped List
-```
+
+```blade
 {{ BsForm::select('animal',[
          'Cats' => ['leopard' => 'Leopard'],
          'Dogs' => ['spaniel' => 'Spaniel'],
    ]) }}
 ```
+
 <a name="submit"></a>
 # # Generating A Submit Button
-```
+
+```blade
 {{ BsForm::submit('Click Me!') }}
 ```
+
 ## Generateing A Submit Button With Bootstrap Button Style
-```
+
+```blade
 {{ BsForm::submit('Click Me!')->success() }}
-{{ BsForm::submit('Click Me!')->praimary() }}
+{{ BsForm::submit('Click Me!')->primary() }}
 {{ BsForm::submit('Click Me!')->info() }}
 {{ BsForm::submit('Click Me!')->warning() }}
 {{ BsForm::submit('Click Me!')->danger() }}
 ``` 
+
 <a name="metods"></a>
 # # Supported Methods
-`->label($label) ` : To Generate label to the specified field.
-```
+
+> `->label($label) ` : To Generate label to the specified field.
+
+```blade
 {{ BsForm::text('username')->label('Username') }}
 ```
 
-`->name($name) ` : To Generate label to the specified field.
-```
+> `->name($name) ` : To Generate label to the specified field.
+
+```blade
 {{ BsForm::text('username')->label('Username') }}
 ```
 
-`->placeholder($placeholder) ` : To Set placeholder attribute to the specified field.
-```
+> `->placeholder($placeholder) ` : To Set placeholder attribute to the specified field.
+
+```blade
 {{ BsForm::text('username')->placeholder('Please Enter Your Name') }}
 ```
 
-`->min($min)` : To Set min attribute to the specified number field.
-```
+> `->min($min)` : To Set min attribute to the specified number field.
+
+```blade
 {{ BsForm::number('age')->min(10) }}
 ```
 
-`->max($max)` : To Set max attribute to the specified number field.
-```
+> `->max($max)` : To Set max attribute to the specified number field.
+
+```blade
 {{ BsForm::number('age')->min(10)->max(30) }}
 ```
 
-`->step($step)` : To Set step attribute to the specified number field.
-```
+> `->step($step)` : To Set step attribute to the specified number field.
+
+```blade
 {{ BsForm::number('age')->min(10)->max(30)->step(1) }}
 ```
 
-`->multiple($bool = true)` : To Set multiple attribute to the specified select and file fields.
-```
+> `->multiple($bool = true)` : To Set multiple attribute to the specified select and file fields.
+
+```blade
 {{ BsForm::file('photos[]')->multiple() }}
 ```
 
-`->note($note)` : To Set `help-block` to the specified field.
-```
+> `->note($note)` : To Set `help-block` to the specified field.
+
+```blade
 {{ BsForm::text('username')->note('Example: Ahmed Fathy') }}
 ```
 
-`->name($name)` : To Set the name of to the specified field.
-```
+> `->name($name)` : To Set the name of to the specified field.
+
+```blade
 {{ BsForm::text()->name('username')->note('Example: Ahmed Fathy') }}
 ```
 
-`->value($value)` : To Set the value of to the specified field as default will set `old('name')`.
-```
+> `->value($value)` : To Set the value of to the specified field as default will set `old('name')`.
+
+```blade
 {{ BsForm::text()->name('username')->value('Ahmed Fathy') }}
 ```
 
-`->inlineValidation($bool = true)` : To display validation errors in the specified field.
-```
+> `->inlineValidation($bool = true)` : To display validation errors in the specified field.
+
+```blade
 {{ BsForm::text('username')->style('vertical')->inlineValidation(false) }}
 ```
 
-`->style($style = 'default')` : To Set style to the specified field. supported `['default', 'vertical']`
-```
+> `->style($style = 'default')` : To Set style to the specified field. supported `['default', 'vertical']`.
+
+```blade
 {{ BsForm::text('username')->style('vertical') }}
 {{ BsForm::text('email')->style('default') }}
 ```
 
-`->close()` : To close the form tag
-```
+> `->close()` : To close the form tag.
+
+```blade
 {{ BsForm::close() }}
 ```
+
 <a name="resource"></a>
 # # Using Resource With Localed Fields
-You may add localed labels, notes and placeholders using resource option as well:
-```
+
+> You may add localed labels, notes and placeholders using resource option as well:
+
+```blade
 @php(BsForm::resource('users'))
 ```
+
 > You must add `users.php` file to the `resources/lang/en/` path and set the default attributes and notes, placeholders as well:
-```
+
+```php
 <?php
 return [
     'attributes' => [
@@ -224,17 +272,21 @@ return [
 
 <a name="errorBug"></a>
 # # Using Custom Error Message Bag
+
 > You can using custom error bag to display validation errors without any conflict.
-```
+
+```php
 // Default error bag
-BsForm::errorBag('default')
+BsForm::errorBag('default');
 
 // Other error bag
-BsForm::errorBag('create')
+BsForm::errorBag('create');
 ```
+
 <a name="example"></a>
 # # Example Register Form
-```
+
+```blade
 @php(BsForm::resource('users'))
 
 {{ BsForm::post(route('register')) }}
@@ -244,8 +296,10 @@ BsForm::errorBag('create')
 	{{ BsForm::submit()->danger() }}
 {{ BsForm::close() }}
 ```
+
 <a name="multilingual"></a>
 # # Using Multilingual Form Tabs
+
 ```blade
 {{ BsForm::post(route('categories.store')) }}
 	@bsMultilangualFormTabs
@@ -255,6 +309,7 @@ BsForm::errorBag('create')
 	{{ BsForm::submit()->danger() }}
 {{ BsForm::close() }}
 ```
+
 > Note : the input name inside `@bsMultilangualFormTabs` and `@endBsMultilangualFormTabs` suffix with `:{lang}`.
 >
 > Ex. if your supported language is `ar` & `en` the input will named with `name:ar` & `name:en`.
@@ -273,46 +328,57 @@ Category::create($request->all());
 
 <a name="custom-style"></a>
 # # Add Custom Style To The Component
-run the `vendor:publish` artusan command to override components views as well.
-```
+
+> run the `vendor:publish` artusan command to override components views as well.
+
+```bash
 php artisan vendor:publish --provider="Elnooronline\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider" --tag BsForm
 ```
-will override components in `resources/views/vendor/BsForm` path.
 
+> will override components in `resources/views/vendor/BsForm` path.
+
+```
 - views
 	- vendor
 		- BsForm
-			- text
-				- default.blade.php
-				- vertical.blade.php
-				- custom.blade.php
-			- email
-				- default.blade.php
-				- vertical.blade.php
-				- custom.blade.php
-
-you can copy `default.blade.php` file as `custom.blade.php` and use custom style as well :
+		    - bootstrap4
+                - text
+                    - default.blade.php
+                    - vertical.blade.php
+                    - custom.blade.php
+                - email
+                    - default.blade.php
+                    - vertical.blade.php
+                    - custom.blade.php
 ```
+
+> you can copy `default.blade.php` file as `custom.blade.php` and use custom style as well :
+
+```blade
 {{ BsForm::text('name')->style('custom') }}
 ```
-you can also set the style globaly with `BsForm::style()` method before the form open as well
-```
+
+> you can also set the style globally with `BsForm::style()` method before the form open as well :
+
+```blade
 @php(BsForm::style('custom'))
 ```
 
-or 
+> or 
 
-```
+```blade
 @php(BsForm::resource('users')->style('custom'))
 ```
 
-to reset the custom style to the default you should call `clearStyle()` method as well
-```
+> To reset the custom style to the default you should call `clearStyle()` method as well:
+
+```blade
 @php(BsForm::clearStyle())
 ```
 
-For Example :
-```
+> For Example :
+
+```blade
 @php(BsForm::resource('users')->style('web'))
 {{ BsForm::model($user, route('users.update', $user)) }}
 	{{-- All fields here uses web style  --}}
@@ -328,8 +394,10 @@ For Example :
 
 <a name="custom-component"></a>
 # # Add Custom Component
-You may add new component class extends `BaseComponent` and regoster it in your `boot()` method in `AppServiceProvider` class as well:
-```
+
+> You may add new component class extends `BaseComponent` and regoster it in your `boot()` method in `AppServiceProvider` class as well:
+
+```php
 <?php
 
 namespace App\Components;
@@ -400,8 +468,10 @@ class ImageComponent extends BaseComponent
     }
 }
 ```
-Then register the component class in `boot()` method in your `AppServiceProvider` class as well :
-```
+
+> Then register the component class in `boot()` method in your `AppServiceProvider` class as well :
+
+```php
 <?php
 
 namespace App\Providers;
@@ -425,10 +495,12 @@ class AppServiceProvider extends ServiceProvider
     }
     ...
 ```  
-Then create component view file in `views/components/image/default.blade.php` path.
+
+> Then publish the BsForm views and create the new component file in `views/vendor/BsForm/bootstrap4/components/image/default.blade.php` path.
    
-example content of `views/components/image/default.blade.php` file :
-```
+> Eexample content of `views/vendor/BsForm/bootstrap4/components/image/default.blade.php` file :
+
+```blade
 <div class="form-group{{ $errors->has($name) ? ' has-error' : '' }}">
     @if($label)
         {{ Form::label($name, $label, ['class' => 'content-label']) }}
@@ -456,9 +528,10 @@ example content of `views/components/image/default.blade.php` file :
         </div>
     @endif
 </div>
+```
 
-```
 ## Usage
-```
+
+```blade
 {{ BsForm::image('photo', $url) }}
 ```
