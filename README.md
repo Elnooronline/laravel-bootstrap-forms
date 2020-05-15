@@ -16,6 +16,7 @@
 - [Using Resource With Localed Fields](#resource)
 - [Example Register Form](#example)
 - [Add Custom Style To The Component](#custom-style)
+- [Using Multilingual Form Tabs](#multilingual)
 - [Add Custom Component](#custom-component)
 
 <a name="installation"></a>
@@ -243,7 +244,7 @@ BsForm::errorBag('create')
 	{{ BsForm::submit()->danger() }}
 {{ BsForm::close() }}
 ```
-<a name="custom-style"></a>
+<a name="multilingual"></a>
 # # Using Multilingual Form Tabs
 ```blade
 {{ BsForm::post(route('categories.store')) }}
@@ -270,6 +271,7 @@ Category::create([
 Category::create($request->all());
 ```
 
+<a name="custom-style"></a>
 # # Add Custom Style To The Component
 run the `vendor:publish` artusan command to override components views as well.
 ```
