@@ -13,5 +13,5 @@ class EmailComponent extends TextualComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::email';
+    protected $viewPath = 'email';
 }

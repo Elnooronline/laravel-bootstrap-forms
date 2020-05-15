@@ -9,7 +9,7 @@ class SubmitComponent extends BaseComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::submit';
+    protected $viewPath = 'submit';
 
     /**
      * The button class name.

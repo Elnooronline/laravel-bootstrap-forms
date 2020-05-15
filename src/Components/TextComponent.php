@@ -15,5 +15,5 @@ class TextComponent extends TextualComponent implements LocalizableComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::text';
+    protected $viewPath = 'text';
 }

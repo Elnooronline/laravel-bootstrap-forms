@@ -9,7 +9,7 @@ class CheckboxComponent extends BaseComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::checkbox';
+    protected $viewPath = 'checkbox';
 
     /**
      * @var bool

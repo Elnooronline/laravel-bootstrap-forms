@@ -13,5 +13,5 @@ class PasswordComponent extends TextualComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::password';
+    protected $viewPath = 'password';
 }

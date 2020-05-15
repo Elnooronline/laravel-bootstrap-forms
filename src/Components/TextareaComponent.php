@@ -15,7 +15,7 @@ class TextareaComponent extends TextualComponent implements LocalizableComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::textarea';
+    protected $viewPath = 'textarea';
 
     /**
      * Set textarea cols attribute.

@@ -9,5 +9,5 @@ class TimeComponent extends TextualComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::time';
+    protected $viewPath = 'time';
 }

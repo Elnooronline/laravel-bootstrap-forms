@@ -13,5 +13,5 @@ class DateComponent extends TextualComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::date';
+    protected $viewPath = 'date';
 }

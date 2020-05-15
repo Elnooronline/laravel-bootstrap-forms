@@ -13,5 +13,5 @@ class NumberComponent extends TextualComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::number';
+    protected $viewPath = 'number';
 }

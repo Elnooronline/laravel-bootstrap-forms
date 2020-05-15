@@ -19,11 +19,11 @@ class BootstrapFormsServiceProvider extends ServiceProvider
 
         $this->publishes([
             $this->srcPath('config/laravel-bootstrap-forms.php') => config_path('laravel-bootstrap-forms.php'),
-        ]);
+        ], 'laravel-bootstrap-forms.config');
 
         $this->publishes([
             $this->srcPath('views') => resource_path('views/vendor/BsForm'),
-        ], 'BsForm');
+        ], 'laravel-bootstrap-forms.views');
 
         FormDirectives::register();
     }

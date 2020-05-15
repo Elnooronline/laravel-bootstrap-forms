@@ -2,6 +2,7 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Helpers;
 
+use Illuminate\Support\Facades\Config;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Blade;
 
@@ -17,7 +18,9 @@ class RegisterFormDirectives
         Blade::directive('bsMultilangualFormTabs', function () {
             $uniqid = Uuid::uuid1();
 
-            $initLoop = "\$__env->startComponent('BsForm::components.multilangual_form', ['uniqid' => '$uniqid']); \$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
+            $view = Config::get('laravel-bootstrap-forms.views').'.components.multilangual_form';
+
+            $initLoop = "\$__env->startComponent('$view', ['uniqid' => '$uniqid']); \$__currentLoopData = BsForm::getLocales(); \$__env->addLoop(\$__currentLoopData);";
 
             $iterateLoop = "\$__env->startPush('$uniqid'.\$locale->code); \$__env->incrementLoopIndices(); \$loop = \$__env->getLastLoop(); BsForm::locale(\$locale);";
 

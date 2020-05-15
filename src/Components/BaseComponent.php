@@ -3,6 +3,7 @@
 namespace Elnooronline\LaravelBootstrapForms\Components;
 
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Contracts\Support\Htmlable;
 
 abstract class BaseComponent implements Htmlable
@@ -273,7 +274,7 @@ abstract class BaseComponent implements Htmlable
 
     protected function getViewPath()
     {
-        return $this->viewPath.'.'.$this->style;
+        return Config::get('laravel-bootstrap-forms.views').'.'.$this->viewPath.'.'.$this->style;
     }
 
     /**

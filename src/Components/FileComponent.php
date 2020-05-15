@@ -9,7 +9,7 @@ class FileComponent extends BaseComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::file';
+    protected $viewPath = 'file';
 
     /**
      * Initialized the input arguments.

@@ -13,7 +13,7 @@ class SelectComponent extends BaseComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::select';
+    protected $viewPath = 'select';
 
     /**
      * @var array

@@ -9,7 +9,7 @@ class RadioComponent extends BaseComponent
      *
      * @var string
      */
-    protected $viewPath = 'BsForm::radio';
+    protected $viewPath = 'radio';
 
     /**
      * @var bool
