@@ -17,6 +17,7 @@
 - [Example Register Form](#example)
 - [Add Custom Style To The Component](#custom-style)
 - [Using Multilingual Form Tabs](#multilingual)
+- [Using Bootstrap 3](#bootstrap3)
 - [Add Custom Component](#custom-component)
 
 <a name="installation"></a>
@@ -24,6 +25,11 @@
 > Begin by installing this package through Composer. Edit your project's `composer.json` file to require `elnooronline/laravel-bootstrap-forms`.
 ```bash
 composer require elnooronline/laravel-bootstrap-forms
+```
+> You should publish the flags icons in public path to display in multilingual form tabs.
+
+```bash
+php artisan vendor:publish --tag=locales:flags
 ```
 <a name="opening-a-form"></a>
 # # Opening A Form
@@ -324,6 +330,21 @@ Category::create([
 
 // with laravel-bootstrap-forms
 Category::create($request->all());
+```
+
+<a name="bootstrap3"></a>
+# # Using Bootstrap 3
+
+> If you want to use bootstrap 3 you should publish the config file using the following commad and set the bootstrap version globally.
+
+```bash
+php artisan vendor:publish --tag=laravel-bootstrap-forms.config
+```
+
+> After change bootstrap version you should clear the cached view files using the `view:clear` artisan command.
+
+```bash
+php artisan view:clear
 ```
 
 <a name="custom-style"></a>
