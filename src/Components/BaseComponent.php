@@ -2,6 +2,7 @@
 
 namespace Elnooronline\LaravelBootstrapForms\Components;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Contracts\Support\Htmlable;
@@ -112,8 +113,8 @@ abstract class BaseComponent implements Htmlable
     /**
      * Initialized the input arguments.
      *
-     * @param  null  $name
-     * @param  null  $value
+     * @param null $name
+     * @param null $value
      * @return $this
      */
     abstract public function init();
@@ -177,7 +178,7 @@ abstract class BaseComponent implements Htmlable
     /**
      * The key to be used for the view error bag.
      *
-     * @param  string  $bag
+     * @param string $bag
      * @return $this
      */
     public function errorBag($bag = 'default')
@@ -246,8 +247,8 @@ abstract class BaseComponent implements Htmlable
     /**
      * Add custom attribute.
      *
-     * @param  string|array  $key
-     * @param  null  $value
+     * @param string|array $key
+     * @param null $value
      * @return $this
      */
     public function attribute($key, $value = null)
@@ -274,6 +275,15 @@ abstract class BaseComponent implements Htmlable
 
     protected function getViewPath()
     {
+        if (Str::contains($this->viewPath, '::')) {
+            $alias = explode('::', $this->viewPath)[0];
+            $path = explode('::', $this->viewPath)[1];
+
+            $bootstrap = explode('::', Config::get('laravel-bootstrap-forms.views'));
+
+            return $alias.'::'.$bootstrap[1].'.'.$path.'.'.$this->style;
+        }
+
         return Config::get('laravel-bootstrap-forms.views').'.'.$this->viewPath.'.'.$this->style;
     }
 
@@ -293,7 +303,7 @@ abstract class BaseComponent implements Htmlable
     /**
      * Set the input inline validation errors option.
      *
-     * @param  bool  $bool
+     * @param bool $bool
      * @return $this
      */
     public function inlineValidation($bool = true)
@@ -339,7 +349,7 @@ abstract class BaseComponent implements Htmlable
     /**
      * Transform the properties to be used in view.
      *
-     * @param  array  $properties
+     * @param array $properties
      * @return array
      */
     protected function transformProperties(array $properties)
