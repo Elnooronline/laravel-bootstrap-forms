@@ -26,6 +26,11 @@ class BootstrapFormsServiceProvider extends ServiceProvider
         ], 'laravel-bootstrap-forms.views');
 
         FormDirectives::register();
+
+        if ($this->app->runningInConsole() || $this->app->runningUnitTests()) {
+            $this->loadTranslationsFrom(__DIR__.'/../../tests/resources/lang', 'test');
+            $this->loadViewsFrom(__DIR__.'/../../tests/resources/views', 'test');
+        }
     }
 
     /**
